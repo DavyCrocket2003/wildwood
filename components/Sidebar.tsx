@@ -32,17 +32,6 @@ export default function Sidebar({
                 {provider.name}
               </h3>
               <p className="text-xs text-muted">{provider.title}</p>
-              <div className="mt-1 flex items-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-3 w-3 fill-accent text-accent"
-                  />
-                ))}
-                <span className="ml-1 text-xs text-muted">
-                  {provider.rating.toFixed(1)}
-                </span>
-              </div>
             </div>
           </div>
         </div>

@@ -90,9 +90,7 @@ export const timeSlots: TimeSlot[] = [
 
 export const provider = {
   name: "Emily Lacey",
-  title: "Licensed Massage Therapist",
-  rating: 5.0,
-  reviewCount: reviews.length,
+  title: "Somatic Educator & Nature Connection Facilitator",
   phone: "(801) 310-7119",
   email: "emily.lacey@gmail.com",
   timezone: "Mountain Time (MT)",
