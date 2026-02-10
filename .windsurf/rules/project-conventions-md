@@ -1,0 +1,13 @@
+---
+trigger: always_on
+---
+
+## Package Management
+
+- **Use pnpm exclusively** - All package management commands should use pnpm instead of npm
+- Use `pnpm install` for installing dependencies
+- Use `pnpm add <package>` for adding new packages
+- Use `pnpm <script>` for running scripts
+- Use `pnpm dev` for development server
+- Use `pnpm build` for production builds
+- Never use npm commands in this project
