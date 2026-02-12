@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import ServiceColumns from "@/components/ServiceColumns";
 import AboutSidebar from "@/components/AboutSidebar";
 import { getSheetData } from "@/lib/sheet-data";
+import { Mail, Phone } from "lucide-react";
 
 export const runtime = "edge";
 
@@ -20,7 +21,10 @@ export default async function Home() {
         <div className="flex flex-col gap-8 py-10 lg:flex-row">
           {/* Mobile: sidebar first */}
           <div className="lg:hidden">
-            <AboutSidebar />
+            <AboutSidebar
+              phone={data.content.contactPhone}
+              email={data.content.contactEmail}
+            />
           </div>
 
           {/* Main content: service columns */}
@@ -31,7 +35,10 @@ export default async function Home() {
 
           {/* Desktop: sidebar on the right */}
           <div className="hidden lg:block">
-            <AboutSidebar />
+            <AboutSidebar
+              phone={data.content.contactPhone}
+              email={data.content.contactEmail}
+            />
           </div>
         </div>
       </div>
@@ -52,6 +59,26 @@ export default async function Home() {
             &copy; {new Date().getFullYear()} WildWoods Studio. All rights
             reserved.
           </p>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
+            {data.content.contactPhone && (
+              <a
+                href={`tel:${data.content.contactPhone}`}
+                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
+              >
+                <Phone className="h-3.5 w-3.5" />
+                {data.content.contactPhone}
+              </a>
+            )}
+            {data.content.contactEmail && (
+              <a
+                href={`mailto:${data.content.contactEmail}`}
+                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
+              >
+                <Mail className="h-3.5 w-3.5" />
+                {data.content.contactEmail}
+              </a>
+            )}
+          </div>
         </div>
       </footer>
     </>

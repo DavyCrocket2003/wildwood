@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
 
-export default function AboutSidebar() {
+interface AboutSidebarProps {
+  phone?: string;
+  email?: string;
+}
+
+export default function AboutSidebar({ phone, email }: AboutSidebarProps) {
   return (
     <aside className="w-full lg:sticky lg:top-20 lg:w-80 lg:shrink-0 lg:self-start">
       <div className="rounded-xl border border-border bg-surface p-6">
@@ -20,6 +26,26 @@ export default function AboutSidebar() {
             studio or out in the forest, every experience is designed to nurture
             mind, body, and spirit.
           </p>
+          <div className="mt-4 flex flex-col items-center gap-2 text-sm text-muted">
+            {phone && (
+              <a
+                href={`tel:${phone}`}
+                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
+              >
+                <Phone className="h-3.5 w-3.5" />
+                {phone}
+              </a>
+            )}
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
+              >
+                <Mail className="h-3.5 w-3.5" />
+                {email}
+              </a>
+            )}
+          </div>
           <Link
             href="/book"
             className="mt-6 inline-block w-full rounded-lg bg-accent px-6 py-3 text-center text-sm font-medium text-accent-foreground no-underline transition-colors hover:bg-accent-hover"
