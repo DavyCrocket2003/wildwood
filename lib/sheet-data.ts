@@ -109,6 +109,7 @@ export async function getSheetData(): Promise<SheetData> {
   try {
     const res = await fetch(SHEET_URL, {
       cf: { cacheTtl: REVALIDATE_SECONDS, cacheEverything: true },
+      signal: AbortSignal.timeout(5000),
     } as RequestInit);
 
     if (!res.ok) {
