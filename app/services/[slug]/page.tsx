@@ -3,14 +3,10 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { getSheetData, getServiceBySlug } from "@/lib/sheet-data";
 
+export const runtime = "edge";
+
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  const data = await getSheetData();
-  const all = [...data.studioServices, ...data.natureServices];
-  return all.map((s) => ({ slug: s.slug }));
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {

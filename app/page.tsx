@@ -4,6 +4,8 @@ import ServiceColumns from "@/components/ServiceColumns";
 import AboutSidebar from "@/components/AboutSidebar";
 import { getSheetData } from "@/lib/sheet-data";
 
+export const runtime = "edge";
+
 export default async function Home() {
   const data = await getSheetData();
 

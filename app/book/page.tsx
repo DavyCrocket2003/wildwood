@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import BookingWizard from "@/components/BookingWizard";
 import { getSheetData } from "@/lib/sheet-data";
 
+export const runtime = "edge";
+
 export default async function BookPage() {
   const data = await getSheetData();
 

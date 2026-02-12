@@ -104,12 +104,12 @@ function toBookableServices(services: SheetService[]): Service[] {
     }));
 }
 
-// ── Main fetch function (cached via Next.js ISR) ────────────────────
+// ── Main fetch function (cached via Cloudflare edge) ────────────────
 export async function getSheetData(): Promise<SheetData> {
   try {
     const res = await fetch(SHEET_URL, {
-      next: { revalidate: REVALIDATE_SECONDS },
-    });
+      cf: { cacheTtl: REVALIDATE_SECONDS, cacheEverything: true },
+    } as RequestInit);
 
     if (!res.ok) {
       console.error(`Sheet fetch failed: ${res.status} ${res.statusText}`);
