@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
-import { services, type Service } from "@/lib/mock-data";
+import { services as defaultServices, type Service } from "@/lib/mock-data";
 import ServiceCard from "@/components/ServiceCard";
 import CalendarMock from "@/components/CalendarMock";
 import UserDetailsForm from "@/components/UserDetailsForm";
@@ -11,7 +11,22 @@ import Sidebar from "@/components/Sidebar";
 
 const steps = ["Service", "Time", "Details"];
 
-export default function BookingWizard() {
+interface BookingWizardProps {
+  bookableServices?: Service[];
+  providerData?: {
+    name: string;
+    title: string;
+    phone: string;
+    email: string;
+    timezone: string;
+  };
+}
+
+export default function BookingWizard({
+  bookableServices,
+  providerData,
+}: BookingWizardProps) {
+  const services = bookableServices || defaultServices;
   const [step, setStep] = useState(0);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -140,6 +155,7 @@ export default function BookingWizard() {
             selectedDate ? format(selectedDate, "MMMM d, yyyy") : null
           }
           selectedTime={selectedTime}
+          providerData={providerData}
         />
       </div>
     </div>

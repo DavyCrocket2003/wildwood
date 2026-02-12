@@ -1,13 +1,14 @@
-"use client";
-
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import BookingWizard from "@/components/BookingWizard";
+import { getSheetData } from "@/lib/sheet-data";
 
-export default function BookPage() {
+export default async function BookPage() {
+  const data = await getSheetData();
+
   return (
     <>
-      <Navbar />
+      <Navbar phone={data.content.contactPhone} />
       <div className="px-4 py-8 sm:px-6">
         <Link
           href="/"
@@ -15,7 +16,10 @@ export default function BookPage() {
         >
           &larr; Back to Services
         </Link>
-        <BookingWizard />
+        <BookingWizard
+          bookableServices={data.bookableServices}
+          providerData={data.provider}
+        />
       </div>
     </>
   );

@@ -1,4 +1,12 @@
-export default function Hero() {
+interface HeroProps {
+  title?: string;
+  subtitle?: string;
+}
+
+export default function Hero({
+  title = "WildWoods Studio",
+  subtitle = "Connecting you to yourself, others, and the Earth.",
+}: HeroProps) {
   return (
     <section className="relative flex min-h-[200px] items-center justify-center overflow-hidden sm:min-h-[260px]">
       <div
@@ -14,11 +22,11 @@ export default function Hero() {
           className="mb-6 h-20 w-20 opacity-90"
         />
         <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          WildWoods Studio
+          {title}
         </h1>
         <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-accent" />
         <p className="mt-4 max-w-md text-lg text-muted">
-          Connecting you to yourself, others, and the Earth.
+          {subtitle}
         </p>
       </div>
     </section>

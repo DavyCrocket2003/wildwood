@@ -2,7 +2,13 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { provider } from "@/lib/mock-data";
 
-export default function Navbar() {
+interface NavbarProps {
+  phone?: string;
+}
+
+export default function Navbar({ phone }: NavbarProps) {
+  const displayPhone = phone || provider.phone;
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -19,11 +25,11 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           <a
-            href={`tel:${provider.phone}`}
+            href={`tel:${displayPhone}`}
             className="hidden items-center gap-2 text-sm text-muted no-underline transition-colors hover:text-foreground sm:flex"
           >
             <Phone className="h-4 w-4" />
-            {provider.phone}
+            {displayPhone}
           </a>
           <Link
             href="/book"

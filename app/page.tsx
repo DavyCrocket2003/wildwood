@@ -2,12 +2,18 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServiceColumns from "@/components/ServiceColumns";
 import AboutSidebar from "@/components/AboutSidebar";
+import { getSheetData } from "@/lib/sheet-data";
 
-export default function Home() {
+export default async function Home() {
+  const data = await getSheetData();
+
   return (
     <>
-      <Navbar />
-      <Hero />
+      <Navbar phone={data.content.contactPhone} />
+      <Hero
+        title={data.content.heroTitle}
+        subtitle={data.content.heroSubtitle}
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 py-10 lg:flex-row">
           {/* Mobile: sidebar first */}
@@ -16,7 +22,10 @@ export default function Home() {
           </div>
 
           {/* Main content: service columns */}
-          <ServiceColumns />
+          <ServiceColumns
+            studioServices={data.studioServices}
+            natureServices={data.natureServices}
+          />
 
           {/* Desktop: sidebar on the right */}
           <div className="hidden lg:block">

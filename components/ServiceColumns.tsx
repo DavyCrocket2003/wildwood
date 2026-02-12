@@ -1,46 +1,16 @@
 import Link from "next/link";
 import { Trees, Home } from "lucide-react";
+import type { SheetService } from "@/lib/sheet-data";
 
-const studioServices = [
-  {
-    name: "Stickwork Training",
-    slug: "stickwork-training",
-    description: "Learn the art of natural stick construction and creative building with foraged materials.",
-  },
-  {
-    name: "doTERRA",
-    slug: "doterra",
-    description: "Essential oil wellness consultations and aromatherapy experiences.",
-  },
-  {
-    name: "Group Classes",
-    slug: "group-classes",
-    description: "Community-centered group sessions for movement, mindfulness, and connection.",
-  },
-];
-
-const natureServices = [
-  {
-    name: "Forest School",
-    slug: "forest-school",
-    description: "Outdoor learning experiences rooted in nature-based education and exploration.",
-  },
-  {
-    name: "Forest Bathing Therapy",
-    slug: "forest-bathing",
-    description: "Guided sensory immersion in nature for deep relaxation and mental clarity.",
-  },
-  {
-    name: "Special Occasions",
-    slug: "special-occasions",
-    description: "Unique nature-based gatherings for birthdays, retreats, and celebrations.",
-  },
-];
+interface ServiceColumnsProps {
+  studioServices?: SheetService[];
+  natureServices?: SheetService[];
+}
 
 function ServiceList({
   services,
 }: {
-  services: { name: string; slug: string; description: string }[];
+  services: { name: string; slug: string; about: string }[];
 }) {
   return (
     <div className="space-y-3">
@@ -54,7 +24,7 @@ function ServiceList({
             <h3 className="text-base font-semibold text-foreground">
               {service.name}
             </h3>
-            <p className="mt-1 text-sm text-muted">{service.description}</p>
+            <p className="mt-1 text-sm text-muted">{service.about}</p>
           </div>
           <span className="ml-4 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-0.5">
             &#8594;
@@ -65,7 +35,10 @@ function ServiceList({
   );
 }
 
-export default function ServiceColumns() {
+export default function ServiceColumns({
+  studioServices = [],
+  natureServices = [],
+}: ServiceColumnsProps) {
   return (
     <section className="flex-1">
       <div className="grid gap-8 md:grid-cols-2">

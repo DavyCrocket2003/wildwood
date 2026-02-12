@@ -1,19 +1,30 @@
 "use client";
 
-import { Star, Phone, Mail } from "lucide-react";
-import { provider, type Service } from "@/lib/mock-data";
+import { Phone, Mail } from "lucide-react";
+import { provider as defaultProvider, type Service } from "@/lib/mock-data";
+
+interface ProviderData {
+  name: string;
+  title: string;
+  phone: string;
+  email: string;
+  timezone: string;
+}
 
 interface SidebarProps {
   selectedService?: Service | null;
   selectedDate?: string | null;
   selectedTime?: string | null;
+  providerData?: ProviderData;
 }
 
 export default function Sidebar({
   selectedService,
   selectedDate,
   selectedTime,
+  providerData,
 }: SidebarProps) {
+  const p = providerData || defaultProvider;
   const hasBookingInfo = selectedService || selectedDate || selectedTime;
 
   return (
@@ -24,14 +35,14 @@ export default function Sidebar({
           <div className="flex items-center gap-3">
             <img
               src="/images/logo-swirl.svg"
-              alt={provider.name}
+              alt={p.name}
               className="h-12 w-12 rounded-full bg-surface-hover p-1"
             />
             <div>
               <h3 className="text-sm font-semibold text-foreground">
-                {provider.name}
+                {p.name}
               </h3>
-              <p className="text-xs text-muted">{provider.title}</p>
+              <p className="text-xs text-muted">{p.title}</p>
             </div>
           </div>
         </div>
@@ -85,22 +96,22 @@ export default function Sidebar({
           </h3>
           <div className="space-y-2">
             <a
-              href={`tel:${provider.phone}`}
+              href={`tel:${p.phone}`}
               className="flex items-center gap-2 text-sm text-muted no-underline transition-colors hover:text-foreground"
             >
               <Phone className="h-4 w-4" />
-              {provider.phone}
+              {p.phone}
             </a>
             <a
-              href={`mailto:${provider.email}`}
+              href={`mailto:${p.email}`}
               className="flex items-center gap-2 text-sm text-muted no-underline transition-colors hover:text-foreground"
             >
               <Mail className="h-4 w-4" />
-              {provider.email}
+              {p.email}
             </a>
           </div>
           <p className="mt-3 text-xs text-muted">
-            {provider.timezone}
+            {p.timezone}
           </p>
         </div>
       </div>
