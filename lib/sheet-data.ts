@@ -94,7 +94,7 @@ function parseServices(
 // ── Convert SheetService[] → bookable Service[] (for BookingWizard) ─
 function toBookableServices(services: SheetService[]): Service[] {
   return services
-    .filter((s) => s.price !== null && s.duration !== null)
+    .filter((s) => s.price !== null && s.price > 0 && s.duration !== null)
     .map((s) => ({
       id: s.slug,
       name: s.name,

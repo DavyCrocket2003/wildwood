@@ -54,12 +54,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
           ))}
         </div>
 
-        <Link
-          href="/book"
-          className="mt-8 inline-block rounded-lg bg-accent px-8 py-3 text-sm font-medium text-accent-foreground no-underline transition-colors hover:bg-accent-hover"
-        >
-          Book This Service
-        </Link>
+        {service.price !== null && service.price > 0 && (
+          <Link
+            href={`/book?service=${service.slug}`}
+            className="mt-8 inline-block rounded-lg bg-accent px-8 py-3 text-sm font-medium text-accent-foreground no-underline transition-colors hover:bg-accent-hover"
+          >
+            Book This Service
+          </Link>
+        )}
       </div>
     </>
   );

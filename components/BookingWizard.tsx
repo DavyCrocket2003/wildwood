@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 import { services as defaultServices, type Service } from "@/lib/mock-data";
@@ -27,8 +28,22 @@ export default function BookingWizard({
   providerData,
 }: BookingWizardProps) {
   const services = bookableServices || defaultServices;
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+
+  // Deep-link: if ?service=slug is present, auto-select and skip to step 1
+  useEffect(() => {
+    const serviceSlug = searchParams.get("service");
+    if (serviceSlug) {
+      const match = services.find((s) => s.id === serviceSlug);
+      if (match) {
+        setSelectedService(match);
+        setStep(1);
+      }
+    }
+  }, [searchParams, services]);
+
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
