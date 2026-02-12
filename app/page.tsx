@@ -36,8 +36,13 @@ export default async function Home() {
         </div>
       </div>
 
-      <footer className="border-t border-border py-10">
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <footer className="relative border-t border-border py-10 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/flowers-forest.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-background/85" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <img
             src="/images/logo-swirl.svg"
             alt="WildWoods"
