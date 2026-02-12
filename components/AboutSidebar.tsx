@@ -12,7 +12,7 @@ export default function AboutSidebar({ phone, email }: AboutSidebarProps) {
       <div className="rounded-xl border border-border bg-surface p-6">
         <div className="flex flex-col items-center text-center">
           <img
-            src="/images/emily-photo.jpg"
+            src="/images/emily-photo.heic"
             alt="Emily Lacey"
             className="mb-4 h-28 w-28 rounded-full object-cover"
           />
