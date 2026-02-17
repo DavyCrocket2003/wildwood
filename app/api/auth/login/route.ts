@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     const { username, password } = (await request.json()) as {
