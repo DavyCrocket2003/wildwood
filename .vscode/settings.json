@@ -1,0 +1,21 @@
+{
+  "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "args": ["--login"]
+    }
+  },
+  "terminal.integrated.legacyTerminalProfile": true,
+  // THIS IS THE KEY FOR CASCADE run_command IN REMOTE-WSL
+  "terminal.integrated.automationProfile.linux": {
+    "path": "/bin/bash",
+    "args": ["--login"]
+  },
+  // Keep your other prefs if you want, but these override for WSL
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",  // Fallback
+  "terminal.integrated.automationProfile.windows": {
+    "path": "C:\\Users\\davyc\\AppData\\Local\\Microsoft\\WindowsApps\\bash.exe"
+  }
+}

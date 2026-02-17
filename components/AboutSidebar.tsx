@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
+import { EditableText } from "@/components/editable/EditableText";
+import { LogoutButton } from "@/components/auth/LogoutButton";
 
 interface AboutSidebarProps {
   phone?: string;
   email?: string;
+  onUpdate?: () => void;
 }
 
-export default function AboutSidebar({ phone, email }: AboutSidebarProps) {
+export default function AboutSidebar({ phone, email, onUpdate }: AboutSidebarProps) {
   return (
     <aside className="w-full lg:sticky lg:top-20 lg:w-80 lg:shrink-0 lg:self-start">
       <div className="rounded-xl border border-border bg-surface p-6">
@@ -16,35 +21,37 @@ export default function AboutSidebar({ phone, email }: AboutSidebarProps) {
             alt="Emily Lacey"
             className="mb-4 h-28 w-28 rounded-full object-cover"
           />
-          <p className="text-sm font-medium text-accent">Founder, WildWoods Studio</p>
+          <p className="text-sm font-medium text-accent">Founder, Wildwoods Studio</p>
           <p className="text-lg font-semibold">Emily Lacey</p>
           <div className="mx-auto mt-3 h-0.5 w-10 rounded-full bg-border" />
           <p className="mt-4 text-sm leading-relaxed text-muted">
             With a deep love for nature and holistic wellness, I created
-            WildWoods Studio to help people reconnect — with themselves, with
+            Wildwoods Studio to help people reconnect — with themselves, with
             others, and with the natural world around them. Whether in the
             studio or out in the forest, every experience is designed to nurture
             mind, body, and spirit.
           </p>
           <div className="mt-4 flex flex-col items-center gap-2 text-sm text-muted">
-            {phone && (
-              <a
-                href={`tel:${phone}`}
-                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
-              >
-                <Phone className="h-3.5 w-3.5" />
-                {phone}
-              </a>
-            )}
-            {email && (
-              <a
-                href={`mailto:${email}`}
-                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
-              >
-                <Mail className="h-3.5 w-3.5" />
-                {email}
-              </a>
-            )}
+            <div className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground">
+              <Phone className="h-3.5 w-3.5" />
+              <EditableText
+                contentKey="contact_phone"
+                initialValue={phone || ""}
+                as="span"
+                className=""
+                onUpdate={onUpdate}
+              />
+            </div>
+            <div className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground">
+              <Mail className="h-3.5 w-3.5" />
+              <EditableText
+                contentKey="contact_email"
+                initialValue={email || ""}
+                as="span"
+                className=""
+                onUpdate={onUpdate}
+              />
+            </div>
           </div>
           <Link
             href="/book"
@@ -52,6 +59,9 @@ export default function AboutSidebar({ phone, email }: AboutSidebarProps) {
           >
             Book a Session
           </Link>
+          <div className="mt-4">
+            <LogoutButton />
+          </div>
         </div>
       </div>
     </aside>

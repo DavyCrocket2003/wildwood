@@ -1,26 +1,27 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { provider } from "@/lib/mock-data";
+import { EditableTitle } from "@/components/editable/EditableTitle";
 
 interface NavbarProps {
   phone?: string;
+  siteTitle?: string;
 }
 
-export default function Navbar({ phone }: NavbarProps) {
+export default function Navbar({ phone, siteTitle }: NavbarProps) {
   const displayPhone = phone || provider.phone;
+  const displayTitle = siteTitle || "Wildwoods";
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 no-underline">
-          <img
-            src="/images/logo-swirl.svg"
-            alt="Wildwood"
-            className="h-8 w-8"
+          <EditableTitle
+            contentKey="siteTitle"
+            initialValue={displayTitle}
+            className="text-lg font-semibold text-foreground"
+            as="span"
           />
-          <span className="text-lg font-semibold text-foreground">
-            WildWoods
-          </span>
         </Link>
 
         <div className="flex items-center gap-4">

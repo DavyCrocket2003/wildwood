@@ -1,0 +1,29 @@
+name = "wildwood-booking"
+main = ".open-next/worker.js"
+
+compatibility_date = "2026-02-15"
+compatibility_flags = [
+  "nodejs_compat",
+  "global_fetch_strictly_public"
+]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+services = [
+  { binding = "WORKER_SELF_REFERENCE", service = "wildwood-booking" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wildwood-db"
+database_id = "36a4ab82-29f5-4592-b5f7-58907276cc7f"
+preview_database_id = "DB"
+
+[[r2_buckets]]
+binding = "NEXT_INC_CACHE_R2_BUCKET"
+bucket_name = "next-incremental-cache-local"
+preview_bucket_name = "next-incremental-cache-local-preview"
+
+images = { binding = "IMAGES" }

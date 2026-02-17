@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
   try {
     // Purge the cached opensheet response from Cloudflare's edge cache
     // by deleting it from the Cache API, then re-fetching fresh data.
-    const cache = caches.default;
+    const cache = (caches as unknown as { default: Cache }).default;
     const cacheKey = new Request(SHEET_URL);
     await cache.delete(cacheKey);
 
@@ -71,5 +71,5 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
