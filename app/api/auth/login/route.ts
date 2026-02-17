@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-
 export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
@@ -11,6 +8,12 @@ export async function POST(request: NextRequest) {
       username: string;
       password: string;
     };
+
+    // Get env from request context for Cloudflare Workers
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const ADMIN_USERNAME = env.ADMIN_USERNAME || process.env.ADMIN_USERNAME;
+    const ADMIN_PASSWORD = env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD;
 
     // Validate credentials
     if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
