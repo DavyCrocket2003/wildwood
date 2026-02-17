@@ -102,6 +102,12 @@ export default function EditableServiceColumns({
   const [studioServicesList, setStudioServicesList] = useState(studioServices);
   const [natureServicesList, setNatureServicesList] = useState(natureServices);
 
+  // Update local state when props change (e.g., after login when data is refreshed)
+  useEffect(() => {
+    setStudioServicesList(studioServices);
+    setNatureServicesList(natureServices);
+  }, [studioServices, natureServices]);
+
   const handleUpdateService = (updatedService: Service) => {
     if (updatedService.category === "studio") {
       setStudioServicesList(services => 

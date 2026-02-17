@@ -95,35 +95,35 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
   return (
     <div className={`group relative ${className}`}>
       {isEditing ? (
-        <div className="space-y-4 p-6 border-4 border-blue-600 rounded-lg bg-white shadow-xl">
+        <div className="space-y-4 p-4 border border-gray-300 rounded-md bg-yellow-50">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Title
               </label>
               <input
                 type="text"
                 value={editedService.title}
                 onChange={(e) => setEditedService({ ...editedService, title: e.target.value })}
-                className="w-full p-3 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 font-medium"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Service title"
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Category
               </label>
               <select
                 value={editedService.category}
                 onChange={(e) => setEditedService({ ...editedService, category: e.target.value as "studio" | "nature" })}
-                className="w-full p-3 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 font-medium"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="studio">Studio</option>
                 <option value="nature">Nature</option>
               </select>
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Price ($)
               </label>
               <input
@@ -132,12 +132,12 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
                 min="0"
                 value={editedService.price}
                 onChange={(e) => setEditedService({ ...editedService, price: parseFloat(e.target.value) || 0 })}
-                className="w-full p-3 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 font-medium"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="0.00"
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Duration (minutes)
               </label>
               <input
@@ -145,7 +145,7 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
                 min="1"
                 value={editedService.duration}
                 onChange={(e) => setEditedService({ ...editedService, duration: parseInt(e.target.value) || 60 })}
-                className="w-full p-3 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 font-medium"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="60"
               />
             </div>
@@ -182,40 +182,40 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
               onChange={(e) => setEditedService({ ...editedService, is_active: e.target.checked })}
               className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
             />
-            <label htmlFor="is_active" className="text-sm font-bold text-gray-900">
+            <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
               Active (visible to users)
             </label>
           </div>
           {error && (
-            <div className="text-red-700 text-sm font-semibold bg-red-100 p-2 rounded">{error}</div>
+            <div className="text-red-600 text-sm">{error}</div>
           )}
           <div className="flex gap-2">
             <button
               onClick={handleSave}
               disabled={isLoading}
-              className="inline-flex items-center gap-2 px-5 py-3 text-base font-semibold bg-green-700 text-white rounded-md hover:bg-green-800 disabled:opacity-50 border-2 border-green-800"
+              className="inline-flex items-center gap-1 px-3 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
             >
-              <Save className="h-5 w-5" />
+              <Save className="h-4 w-4" />
               {isLoading ? "Saving..." : "Save"}
             </button>
             <button
               onClick={handleCancel}
-              className="inline-flex items-center gap-2 px-5 py-3 text-base font-semibold bg-gray-700 text-white rounded-md hover:bg-gray-800 border-2 border-gray-800"
+              className="inline-flex items-center gap-1 px-3 py-2 text-sm bg-gray-600 text-white rounded hover:bg-gray-700"
             >
-              <X className="h-5 w-5" />
+              <X className="h-4 w-4" />
               Cancel
             </button>
           </div>
         </div>
       ) : (
         <div className="flex items-center gap-2">
-          <div className="text-black font-bold">{service.title}</div>
+          <div className="text-gray-900">{service.title}</div>
           <button
             onClick={() => setIsEditing(true)}
-            className="opacity-100 p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-lg border-2 border-blue-700"
+            className="opacity-0 group-hover:opacity-100 transition-opacity p-1 text-gray-600 hover:text-blue-600"
             title="Edit service"
           >
-            <Edit className="h-5 w-5" />
+            <Edit className="h-4 w-4" />
           </button>
         </div>
       )}
