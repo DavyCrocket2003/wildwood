@@ -10,7 +10,9 @@ export async function GET(
   try {
     const { key } = await params;
     
-    const db = await getDB();
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const db = await getDB(env);
     // Get content from database
     const result = await db.prepare(
       "SELECT value FROM content WHERE key = ?"
@@ -48,7 +50,9 @@ export async function PUT(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const db = await getDB();
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const db = await getDB(env);
     // Update content in database
     const result = await db.prepare(
       `INSERT OR REPLACE INTO content (key, value, updated_at) 

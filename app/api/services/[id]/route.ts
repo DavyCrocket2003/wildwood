@@ -10,7 +10,9 @@ export async function GET(
   try {
     const { id } = await params;
     
-    const db = await getDB();
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const db = await getDB(env);
     // Get service from database
     const service = await db.prepare(
       "SELECT * FROM services WHERE id = ?"
@@ -61,8 +63,10 @@ export async function PUT(
       return NextResponse.json({ error: "Invalid category" }, { status: 400 });
     }
 
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const db = await getDB(env);
     // Update service
-    const db = await getDB();
     const result = await db.prepare(
       `UPDATE services 
        SET category = ?, title = ?, description = ?, price = ?, duration = ?, 
@@ -97,8 +101,10 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const db = await getDB(env);
     // Soft delete by setting is_active to false
-    const db = await getDB();
     const result = await db.prepare(
       "UPDATE services SET is_active = false, updated_at = CURRENT_TIMESTAMP WHERE id = ?"
     ).bind(id).run();

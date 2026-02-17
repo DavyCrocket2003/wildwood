@@ -5,7 +5,9 @@ export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
   try {
-    const db = await getDB();
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const db = await getDB(env);
     // Get all services from database
     const services = await db.prepare(
       "SELECT * FROM services WHERE is_active = true ORDER BY category, title"
@@ -47,8 +49,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid category" }, { status: 400 });
     }
 
-    // Create new service
-    const db = await getDB();
+    // @ts-ignore - env is available in edge runtime
+    const env = request.env || {};
+    const db = await getDB(env);
     
     console.log('Creating service with params:', { category, title, description, price, duration, detail_text });
     

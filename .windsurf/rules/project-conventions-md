@@ -11,3 +11,11 @@ trigger: always_on
 - Use `pnpm dev` for development server
 - Use `pnpm build` for production builds
 - Never use npm commands in this project
+
+## Cloudflare Pages Edge Runtime Requirements
+
+- **All API routes must use edge runtime** - Every API route file must include `export const runtime = 'edge';`
+- **Database access requires env parameter** - All calls to `getDB()` must pass the env parameter: `const db = await getDB(request.env || {});`
+- **Environment variables access** - Use `request.env` for Cloudflare secrets in production, with `process.env` as fallback for local development
+- **No Node.js APIs** - Edge runtime doesn't support Node.js APIs, use Web APIs instead
+- **Static generation limitations** - Pages using edge runtime cannot be statically generated during build time
