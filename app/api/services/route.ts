@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/lib/db";
 
-export const runtime = 'edge';
-
 export async function GET(request: NextRequest) {
   try {
-    const db = getDB();
+    const db = await getDB();
     // Get all services from database
     const services = await db.prepare(
       "SELECT * FROM services WHERE is_active = true ORDER BY category, title"
@@ -47,7 +45,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid category" }, { status: 400 });
     }
 
-    const db = getDB();
+    const db = await getDB();
     
     const result = await db.prepare(
       `INSERT INTO services (category, title, description, price, duration, detail_text, is_active) 

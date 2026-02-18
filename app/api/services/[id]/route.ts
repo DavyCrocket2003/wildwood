@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/lib/db";
 
-export const runtime = 'edge';
-
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -10,7 +8,7 @@ export async function GET(
   try {
     const { id } = await params;
     
-    const db = getDB();
+    const db = await getDB();
     // Get service from database
     const service = await db.prepare(
       "SELECT * FROM services WHERE id = ?"
@@ -61,7 +59,7 @@ export async function PUT(
       return NextResponse.json({ error: "Invalid category" }, { status: 400 });
     }
 
-    const db = getDB();
+    const db = await getDB();
     // Update service
     const result = await db.prepare(
       `UPDATE services 
@@ -97,7 +95,7 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const db = getDB();
+    const db = await getDB();
     // Soft delete by setting is_active to false
     const result = await db.prepare(
       "UPDATE services SET is_active = false, updated_at = CURRENT_TIMESTAMP WHERE id = ?"

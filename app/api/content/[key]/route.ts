@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/lib/db";
 
-export const runtime = 'edge';
-
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ key: string }> }
@@ -10,7 +8,7 @@ export async function GET(
   try {
     const { key } = await params;
     
-    const db = getDB();
+    const db = await getDB();
     // Get content from database
     const result = await db.prepare(
       "SELECT value FROM content WHERE key = ?"
@@ -48,7 +46,7 @@ export async function PUT(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const db = getDB();
+    const db = await getDB();
     // Update content in database
     const result = await db.prepare(
       `INSERT OR REPLACE INTO content (key, value, updated_at) 
