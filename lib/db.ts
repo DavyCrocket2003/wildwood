@@ -62,9 +62,15 @@ async function getLocalSQLite(): Promise<D1Like> {
 }
 
 export async function getDB(env?: any): Promise<D1Like> {
-  if (process.env.NODE_ENV === "development") {
-    return await getLocalSQLite();
+  // Check if we're in a Cloudflare Workers environment (production)
+  if (typeof globalThis !== 'undefined' && globalThis.caches) {
+    // We're in Cloudflare Workers edge runtime
+    if (!env || !env.DB) {
+      throw new Error('Database binding not available. Make sure D1 database is properly bound to the worker.');
+    }
+    return env.DB;
   }
 
-  return env.DB; // Cloudflare D1 binding
+  // Fallback to development/local SQLite
+  return await getLocalSQLite();
 }

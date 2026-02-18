@@ -8,10 +8,12 @@ import { getAppData, REVALIDATE_SECONDS } from "@/lib/data";
  * Returns the site content data with strong cache headers. Useful for any client-side
  * consumers or external integrations.
  */
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    // @ts-ignore - env is available in edge runtime
+    const env = (request as any).env || {};
     // Get data from database
-    const appData = await getAppData();
+    const appData = await getAppData(env);
     
     return NextResponse.json({ content: appData.content }, {
       headers: {
