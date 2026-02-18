@@ -4,7 +4,7 @@ import BookingWizard from "@/components/BookingWizard";
 import { getAppData } from "@/lib/data";
 import { Suspense } from "react";
 
-export const runtime = "nodejs";
+export const runtime = 'edge';
 
 export default async function BookPage() {
   const data = await getAppData();

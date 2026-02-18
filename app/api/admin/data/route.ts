@@ -5,7 +5,7 @@ export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
   // Add authentication check here in production
-  const db = await getDB();
+  const db = getDB();
   
   try {
     const [content, services, bookings] = await Promise.all([

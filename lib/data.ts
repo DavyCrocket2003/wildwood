@@ -60,7 +60,7 @@ function toBookableServices(services: DatabaseService[]): { id: string; name: st
 // ── Main data fetch function (database only) ────────────────────────
 export async function getAppData(): Promise<AppData> {
   try {
-    const db = await getDB();
+    const db = getDB();
     
     // Get content from database
     const contentResult = await db.prepare(
@@ -140,7 +140,7 @@ export async function getServiceBySlug(
   slug: string,
 ): Promise<DatabaseService | null> {
   try {
-    const db = await getDB();
+    const db = getDB();
     const result = await db.prepare(
       "SELECT id, category, title, description, price, duration, detail_text, is_active, has_detail_page FROM services WHERE id = ?"
     ).bind(slug).first();

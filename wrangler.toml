@@ -19,7 +19,6 @@ service = "wildwood-booking"
 binding = "DB"
 database_name = "wildwood-db"
 database_id = "36a4ab82-29f5-4592-b5f7-58907276cc7f"
-preview_database_id = "DB"
 
 [[r2_buckets]]
 binding = "NEXT_INC_CACHE_R2_BUCKET"

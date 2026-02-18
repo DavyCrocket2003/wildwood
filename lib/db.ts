@@ -7,13 +7,12 @@ import { getCloudflareContext } from '@opennextjs/cloudflare';
  * - **Development (`next dev`):** returns a local D1 provided by Miniflare via
  *   `initOpenNextCloudflareForDev()` (configured in next.config.ts).
  */
-export async function getDB(): Promise<D1Database> {
-  const { env } = await getCloudflareContext({ async: true });
+export function getDB(): D1Database {
+  const { env } = getCloudflareContext();
   if (!env.DB) {
     throw new Error(
       "D1 database binding (DB) not found. " +
-      "Ensure wrangler.toml has a [[d1_databases]] binding named DB " +
-      "and initOpenNextCloudflareForDev() is called in next.config.ts for local dev."
+      "Ensure wrangler.toml has a [[d1_databases]] binding named DB."
     );
   }
   return env.DB;
