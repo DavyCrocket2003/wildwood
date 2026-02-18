@@ -31,7 +31,7 @@ export interface AppData {
   natureServices: DatabaseService[];
   bookableServices: { id: string; name: string; duration: number; price: number; description: string }[];
   reviews: unknown[];
-  provider: { name: string; title: string; phone: string; email: string; image: string };
+  provider: { name: string; title: string; phone: string; email: string; image: string; timezone: string };
 }
 
 // ── Slug generation ─────────────────────────────────────────────────
@@ -126,6 +126,7 @@ export async function getAppData(): Promise<AppData> {
         phone: contentData.contactPhone,
         email: contentData.contactEmail,
         image: "",
+        timezone: "America/Denver",
       },
     };
   } catch (err) {
