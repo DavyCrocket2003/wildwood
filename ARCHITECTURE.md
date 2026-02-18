@@ -66,58 +66,79 @@ Wildwood Booking is a wellness studio booking system designed for Cloudflare Pag
 
 ## Database Design
 
-### Content Blocks Strategy
+### Schema Overview
 
-The `content_blocks` table implements a key-value store pattern:
+The database uses a simple, normalized structure with three main tables:
 
 ```sql
-CREATE TABLE content_blocks (
+-- Content key-value store for site configuration
+CREATE TABLE content (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  key TEXT UNIQUE NOT NULL,           -- Unique identifier
-  value TEXT NOT NULL,                -- Content value (JSON for complex data)
-  type TEXT NOT NULL DEFAULT 'text',  -- Content type for UI rendering
-  description TEXT,                   -- Human-readable description
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  key TEXT UNIQUE NOT NULL,              -- e.g., 'site_title', 'hero_subtitle'
+  value TEXT NOT NULL,                   -- Content value
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Services catalog with categories
+CREATE TABLE services (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  category TEXT NOT NULL CHECK (category IN ('studio', 'nature')),
+  title TEXT NOT NULL,
+  description TEXT,
+  price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  duration INTEGER NOT NULL DEFAULT 60,  -- minutes
+  detail_text TEXT,
+  is_active BOOLEAN DEFAULT TRUE,
+  has_detail_page BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Future booking functionality
+CREATE TABLE bookings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  service_id INTEGER NOT NULL REFERENCES services(id) ON DELETE CASCADE,
+  booking_date DATE NOT NULL,
+  booking_time TIME NOT NULL,
+  user_name TEXT NOT NULL,
+  user_email TEXT NOT NULL,
+  user_phone TEXT,
+  notes TEXT,
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'confirmed', 'cancelled')),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
-#### Content Type System
-- **text**: Simple string values (titles, phone numbers)
-- **html**: Rich HTML content (descriptions, formatted text)
-- **number**: Numeric values (prices, durations)
-- **boolean**: Toggle values (feature flags, visibility)
-- **json**: Complex structured data (service arrays, settings)
+### Content Management Strategy
+
+The `content` table provides a simple key-value store for all site configuration:
 
 #### Key Naming Convention
-- **site_***: Global site settings
-- **hero_***: Hero section content
-- **contact_***: Contact information
-- **studio_N_***: Studio service fields (N=1-10)
-- **nature_N_***: Nature service fields (N=1-10)
-- **booking_***: Booking flow configuration
+- **site_title**: Main site title
+- **hero_title**: Hero section title
+- **hero_subtitle**: Hero section subtitle
+- **contact_phone**: Contact phone number
+- **contact_email**: Contact email address
+- **provider_subtitle**: Provider description/title
 
-### Service Data Structure
-
-Services are stored as individual content blocks but assembled into structured objects:
+#### Service Data Structure
+Services are stored as structured records with full CRUD capability:
 
 ```javascript
-// Raw content blocks
+// Service record from database
 {
-  "studio_1_title": "Massage Therapy",
-  "studio_1_about": "Relaxing massage session",
-  "studio_1_price": "120",
-  "studio_1_length": "60"
-}
-
-// Assembled service object
-{
-  "slug": "massage-therapy",
-  "name": "Massage Therapy",
-  "about": "Relaxing massage session",
-  "price": 120,
-  "duration": 60,
-  "category": "studio"
+  id: 1,
+  category: "studio",
+  title: "Massage Therapy",
+  description: "Relaxing massage session",
+  price: 120.00,
+  duration: 60,
+  detail_text: "Detailed description...",
+  is_active: true,
+  has_detail_page: true,
+  created_at: "2026-02-17T09:41:47.000Z",
+  updated_at: "2026-02-17T09:44:19.000Z"
 }
 ```
 
@@ -149,16 +170,26 @@ components/
 
 ```javascript
 lib/
-├── content-data.ts       # D1 database integration
-├── mock-data.ts         # Fallback data
+├── db.ts                 # Unified D1 database access via getCloudflareContext()
+├── data.ts              # Data fetching and processing
+├── mock-data.ts         # Fallback data (for emergencies)
 └── types.ts             # TypeScript definitions
 ```
 
+#### Database Access Pattern
+```javascript
+// Single unified function for both environments
+export async function getDB(): Promise<D1Database> {
+  const { env } = await getCloudflareContext({ async: true });
+  return env.DB; // D1 binding from wrangler.toml
+}
+```
+
 #### Content Data Flow
-1. **Primary Source**: D1 database via Cloudflare API
-2. **Edge Caching**: 15-minute cache at Cloudflare edge
-3. **Fallback**: Local mock data if database unavailable
-4. **Type Safety**: Full TypeScript integration
+1. **Primary Source**: D1 database (same API in dev and prod)
+2. **Development**: Local Miniflare D1 instance
+3. **Production**: Cloudflare D1 managed database
+4. **Type Safety**: Full TypeScript integration with proper D1 result casting
 
 ### State Management
 
@@ -247,10 +278,11 @@ Git Push → Build → Deploy → Edge Distribution
 - **Build**: Optimized production build
 
 #### Development (Local)
-- **Runtime**: Node.js
-- **Database**: Local D1 instance
+- **Runtime**: Edge Runtime (via Miniflare)
+- **Database**: Local D1 instance (Miniflare, stored in `.wrangler/state/`)
 - **Environment**: Local variables
 - **Build**: Development mode with hot reload
+- **Init**: `initOpenNextCloudflareForDev()` in `next.config.ts` provides D1 bindings
 
 ## Scalability Architecture
 
@@ -285,10 +317,10 @@ Git Push → Build → Deploy → Edge Distribution
 ## Development Workflow
 
 ### Local Development
-1. **D1 Local**: `wrangler d1 execute --local`
-2. **Development Server**: `pnpm dev`
-3. **Database Seeding**: Initial content setup
-4. **Testing**: Integration testing with local D1
+1. **D1 Setup**: `npx wrangler d1 execute wildwood-db --local --file schema.sql`
+2. **Development Server**: `pnpm dev` (uses Miniflare edge runtime)
+3. **Database Seeding**: Initial content via wrangler commands
+4. **Testing**: Integration testing with local D1 (same API as production)
 
 ### Production Deployment
 1. **Git Push**: Trigger automatic deployment

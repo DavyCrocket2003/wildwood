@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDB } from '@/lib/db';
 
+export const runtime = 'edge';
+
 export async function GET(request: NextRequest) {
   // Add authentication check here in production
   const db = await getDB();

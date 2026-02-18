@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/lib/db";
 
+export const runtime = 'edge';
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -68,11 +70,11 @@ export async function PUT(
        WHERE id = ?`
     ).bind(category, title, description, price, duration, detail_text, is_active, id).run();
 
-    if (result.changes === 0) {
+    if (result.meta.changes === 0) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ success: true, changes: result.changes });
+    return NextResponse.json({ success: true, changes: result.meta.changes });
   } catch (error) {
     console.error("Update service error:", error);
     return NextResponse.json(
@@ -101,11 +103,11 @@ export async function DELETE(
       "UPDATE services SET is_active = false, updated_at = CURRENT_TIMESTAMP WHERE id = ?"
     ).bind(id).run();
 
-    if (result.changes === 0) {
+    if (result.meta.changes === 0) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ success: true, changes: result.changes });
+    return NextResponse.json({ success: true, changes: result.meta.changes });
   } catch (error) {
     console.error("Delete service error:", error);
     return NextResponse.json(

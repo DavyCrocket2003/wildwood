@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
-const nextConfig: NextConfig = {
-  // D1 database configuration will be handled by Cloudflare Pages
-  // The DB binding "wildwood-db" will be available in API routes via env.DB
-};
+const nextConfig: NextConfig = {};
+
+if (process.env.NODE_ENV === "development") {
+  initOpenNextCloudflareForDev();
+}
 
 export default nextConfig;

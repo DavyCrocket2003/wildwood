@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/lib/db";
 
+export const runtime = 'edge';
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ key: string }> }
@@ -53,7 +55,7 @@ export async function PUT(
        VALUES (?, ?, CURRENT_TIMESTAMP)`
     ).bind(key, value).run();
 
-    return NextResponse.json({ success: true, changes: result.changes });
+    return NextResponse.json({ success: true, changes: result.meta.changes });
   } catch (error) {
     console.error("Update content error:", error);
     return NextResponse.json(

@@ -146,16 +146,17 @@ export async function getServiceBySlug(
     ).bind(slug).first();
     
     if (result) {
+      const row = result as Record<string, unknown>;
       return {
-        id: Number(result.id),
-        title: result.title,
-        description: result.description || "",
-        price: Number(result.price),
-        duration: Number(result.duration),
-        category: result.category,
-        detail_text: result.detail_text || "",
-        is_active: Boolean(result.is_active),
-        has_detail_page: Boolean(result.has_detail_page ?? true),
+        id: Number(row.id),
+        title: row.title as string,
+        description: (row.description as string) || "",
+        price: Number(row.price),
+        duration: Number(row.duration),
+        category: row.category as "studio" | "nature",
+        detail_text: (row.detail_text as string) || "",
+        is_active: Boolean(row.is_active),
+        has_detail_page: Boolean(row.has_detail_page ?? true),
       };
     }
     

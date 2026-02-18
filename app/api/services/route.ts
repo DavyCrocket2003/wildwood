@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/lib/db";
 
+export const runtime = 'edge';
+
 export async function GET(request: NextRequest) {
   try {
     const db = await getDB();
@@ -47,27 +49,12 @@ export async function POST(request: NextRequest) {
 
     const db = await getDB();
     
-    console.log('Creating service with params:', { category, title, description, price, duration, detail_text });
-    
     const result = await db.prepare(
       `INSERT INTO services (category, title, description, price, duration, detail_text, is_active) 
        VALUES (?, ?, ?, ?, ?, ?, true)`
     ).bind(category, title, description, price, duration, detail_text).run();
 
-    console.log('DB Result:', JSON.stringify(result, null, 2));
-
-    // Handle different result structures
-    let serviceId;
-    if (result && result.meta && result.meta.last_row_id) {
-      serviceId = result.meta.last_row_id;
-    } else if (result && result.lastInsertRowid) {
-      // Fallback for direct SQLite result
-      serviceId = result.lastInsertRowid;
-    } else {
-      throw new Error('Could not retrieve the ID of the created service');
-    }
-
-    return NextResponse.json({ success: true, id: serviceId });
+    return NextResponse.json({ success: true, id: result.meta.last_row_id });
   } catch (error) {
     console.error("Create service error:", error);
     return NextResponse.json(
