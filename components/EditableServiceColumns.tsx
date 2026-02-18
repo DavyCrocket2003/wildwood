@@ -15,6 +15,7 @@ interface Service {
   duration: number;
   detail_text: string;
   is_active: boolean;
+  has_detail_page: boolean;
 }
 
 interface ServiceColumnsProps {
@@ -57,12 +58,9 @@ function ServiceList({
 
   return (
     <div className="space-y-3">
-      {services.map((service) => (
-        <div key={service.id} className="group relative">
-          <Link
-            href={`/services/${service.id}`}
-            className="group flex items-center justify-between rounded-xl border border-border bg-surface p-5 no-underline transition-all duration-200 hover:border-accent/50 hover:bg-surface-hover"
-          >
+      {services.map((service) => {
+        const ServiceContent = (
+          <div className="group flex items-center justify-between rounded-xl border border-border bg-surface p-5 transition-all duration-200 hover:border-accent/50 hover:bg-surface-hover">
             <div>
               <h3 className="text-base font-semibold text-foreground">
                 {service.title}
@@ -75,21 +73,38 @@ function ServiceList({
                 </div>
               )}
             </div>
-            <span className="ml-4 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-0.5">
-              &#8594;
-            </span>
-          </Link>
-          {isAdmin && (
-            <button
-              onClick={() => setEditingId(service.id)}
-              className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-lg border-2 border-blue-700"
-              title="Edit service"
-            >
-              <Edit className="h-5 w-5" />
-            </button>
-          )}
-        </div>
-      ))}
+            {service.has_detail_page && (
+              <span className="ml-4 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-0.5">
+                &#8594;
+              </span>
+            )}
+          </div>
+        );
+
+        return (
+          <div key={service.id} className="group relative">
+            {service.has_detail_page ? (
+              <Link
+                href={`/services/${service.id}`}
+                className="no-underline"
+              >
+                {ServiceContent}
+              </Link>
+            ) : (
+              ServiceContent
+            )}
+            {isAdmin && (
+              <button
+                onClick={() => setEditingId(service.id)}
+                className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-lg border-2 border-blue-700"
+                title="Edit service"
+              >
+                <Edit className="h-5 w-5" />
+              </button>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

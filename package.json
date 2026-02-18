@@ -8,7 +8,9 @@
     "preview": "pnpm exec opennextjs-cloudflare build && pnpm exec opennextjs-cloudflare preview",
     "deploy": "pnpm exec opennextjs-cloudflare build && pnpm exec opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-    "init-db": "npx tsx scripts/init-dev-db.ts"
+    "init-db": "npx tsx scripts/init-dev-db.ts",
+    "migrate": "npx tsx scripts/run-migration.ts",
+    "migrate:prod": "npx tsx scripts/run-migration.ts --remote"
   },
   "dependencies": {
     "better-sqlite3": "^12.6.2",

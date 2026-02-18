@@ -13,6 +13,7 @@ interface ServiceData {
   duration: number;
   detail_text: string;
   is_active: boolean;
+  has_detail_page: boolean;
 }
 
 interface EditableServiceProps {
@@ -184,6 +185,18 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
             />
             <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
               Active (visible to users)
+            </label>
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="has_detail_page"
+              checked={editedService.has_detail_page}
+              onChange={(e) => setEditedService({ ...editedService, has_detail_page: e.target.checked })}
+              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
+            <label htmlFor="has_detail_page" className="text-sm font-medium text-gray-700">
+              Has detail page (links to service details)
             </label>
           </div>
           {error && (

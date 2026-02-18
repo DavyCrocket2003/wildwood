@@ -14,23 +14,37 @@ function ServiceList({
 }) {
   return (
     <div className="space-y-3">
-      {services.map((service) => (
-        <Link
-          key={service.id}
-          href={`/services/${service.id}`}
-          className="group flex items-center justify-between rounded-xl border border-border bg-surface p-5 no-underline transition-all duration-200 hover:border-accent/50 hover:bg-surface-hover"
-        >
-          <div>
-            <h3 className="text-base font-semibold text-foreground">
-              {service.title}
-            </h3>
-            <p className="mt-1 text-sm text-muted">{service.description}</p>
+      {services.map((service) => {
+        const ServiceContent = (
+          <div className="group flex items-center justify-between rounded-xl border border-border bg-surface p-5 transition-all duration-200 hover:border-accent/50 hover:bg-surface-hover">
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                {service.title}
+              </h3>
+              <p className="mt-1 text-sm text-muted">{service.description}</p>
+            </div>
+            {service.has_detail_page && (
+              <span className="ml-4 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-0.5">
+                &#8594;
+              </span>
+            )}
           </div>
-          <span className="ml-4 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-0.5">
-            &#8594;
-          </span>
-        </Link>
-      ))}
+        );
+
+        return service.has_detail_page ? (
+          <Link
+            key={service.id}
+            href={`/services/${service.id}`}
+            className="no-underline"
+          >
+            {ServiceContent}
+          </Link>
+        ) : (
+          <div key={service.id}>
+            {ServiceContent}
+          </div>
+        );
+      })}
     </div>
   );
 }

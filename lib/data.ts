@@ -29,6 +29,7 @@ export interface DatabaseService {
   category: "studio" | "nature";
   detail_text: string;
   is_active: boolean;
+  has_detail_page: boolean;
 }
 
 export interface AppData {
@@ -75,7 +76,7 @@ export async function getAppData(env?: any): Promise<AppData> {
     
     // Get services from database
     const servicesResult = await db.prepare(
-      "SELECT id, category, title, description, price, duration, detail_text, is_active FROM services ORDER BY category, title"
+      "SELECT id, category, title, description, price, duration, detail_text, is_active, has_detail_page FROM services ORDER BY category, title"
     ).bind().all();
     
     // Process content data
@@ -111,6 +112,7 @@ export async function getAppData(env?: any): Promise<AppData> {
           category: row.category,
           detail_text: row.detail_text || "",
           is_active: Boolean(row.is_active),
+          has_detail_page: Boolean(row.has_detail_page ?? true),
         });
       });
     }
@@ -125,6 +127,7 @@ export async function getAppData(env?: any): Promise<AppData> {
       category: "studio" as const,
       detail_text: s.description,
       is_active: true,
+      has_detail_page: true,
     }));
     
     // Separate by category
@@ -170,6 +173,7 @@ function fallbackData(): AppData {
       category: "studio" as const,
       detail_text: s.description,
       is_active: true,
+      has_detail_page: true,
     })),
     natureServices: [],
     bookableServices: fallbackServices,
@@ -186,7 +190,7 @@ export async function getServiceBySlug(
   try {
     const db = await getDB(env);
     const result = await db.prepare(
-      "SELECT id, category, title, description, price, duration, detail_text, is_active FROM services WHERE id = ?"
+      "SELECT id, category, title, description, price, duration, detail_text, is_active, has_detail_page FROM services WHERE id = ?"
     ).bind(slug).first();
     
     if (result) {
@@ -199,6 +203,7 @@ export async function getServiceBySlug(
         category: result.category,
         detail_text: result.detail_text || "",
         is_active: Boolean(result.is_active),
+        has_detail_page: Boolean(result.has_detail_page ?? true),
       };
     }
     
