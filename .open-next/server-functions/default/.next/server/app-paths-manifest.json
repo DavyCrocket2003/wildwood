@@ -1,0 +1,18 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/admin/data/route": "app-edge-has-no-entrypoint",
+  "/api/auth/login/route": "app-edge-has-no-entrypoint",
+  "/api/auth/logout/route": "app-edge-has-no-entrypoint",
+  "/api/auth/status/route": "app-edge-has-no-entrypoint",
+  "/api/content/[key]/route": "app-edge-has-no-entrypoint",
+  "/api/content/route": "app-edge-has-no-entrypoint",
+  "/api/revalidate/route": "app-edge-has-no-entrypoint",
+  "/api/services/[id]/route": "app-edge-has-no-entrypoint",
+  "/api/services/route": "app-edge-has-no-entrypoint",
+  "/book/page": "app-edge-has-no-entrypoint",
+  "/page": "app-edge-has-no-entrypoint",
+  "/services/[slug]/page": "app-edge-has-no-entrypoint"
+}
