@@ -5,30 +5,19 @@ import Link from "next/link";
 import { Trees, Home, Edit, Plus } from "lucide-react";
 import { EditableService } from "@/components/editable/EditableService";
 import { useAuth } from "@/components/auth/AuthProvider";
-
-interface Service {
-  id: number;
-  category: "studio" | "nature";
-  title: string;
-  description: string;
-  price: number;
-  duration: number;
-  detail_text: string;
-  is_active: boolean;
-  has_detail_page: boolean;
-}
+import { DatabaseService } from "@/lib/data";
 
 interface ServiceColumnsProps {
-  studioServices?: Service[];
-  natureServices?: Service[];
+  studioServices?: DatabaseService[];
+  natureServices?: DatabaseService[];
 }
 
 function ServiceList({
   services,
   onUpdate,
 }: {
-  services: Service[];
-  onUpdate?: (updatedService: Service) => void;
+  services: DatabaseService[];
+  onUpdate?: (updatedService: DatabaseService) => void;
 }) {
   const { isAdmin } = useAuth();
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -123,7 +112,7 @@ export default function EditableServiceColumns({
     setNatureServicesList(natureServices);
   }, [studioServices, natureServices]);
 
-  const handleUpdateService = (updatedService: Service) => {
+  const handleUpdateService = (updatedService: DatabaseService) => {
     if (updatedService.category === "studio") {
       setStudioServicesList(services => 
         services.map(s => s.id === updatedService.id ? updatedService : s)

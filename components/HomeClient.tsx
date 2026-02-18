@@ -7,17 +7,7 @@ import EditableServiceColumns from "@/components/EditableServiceColumns";
 import AboutSidebar from "@/components/AboutSidebar";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Mail, Phone } from "lucide-react";
-
-interface Service {
-  id: number;
-  category: "studio" | "nature";
-  title: string;
-  description: string;
-  price: number;
-  duration: number;
-  detail_text: string;
-  is_active: boolean;
-}
+import { DatabaseService } from "@/lib/data";
 
 interface Content {
   siteTitle: string;
@@ -29,17 +19,17 @@ interface Content {
 
 interface HomeData {
   content: Content;
-  studioServices: Service[];
-  natureServices: Service[];
+  studioServices: DatabaseService[];
+  natureServices: DatabaseService[];
 }
 
 export default function HomeClient() {
   const { isAdmin } = useAuth();
   const [data, setData] = useState<HomeData>({
     content: {
-      siteTitle: "Wildwoods Studio",
-      heroTitle: "Wildwoods Studio",
-      heroSubtitle: "Connecting you to yourself, others, and the Earth.",
+      siteTitle: "",
+      heroTitle: "",
+      heroSubtitle: "",
       contactPhone: "",
       contactEmail: "",
     },
@@ -56,7 +46,7 @@ export default function HomeClient() {
     try {
       // Fetch services from database
       const servicesResponse = await fetch("/api/services");
-      const servicesData = await servicesResponse.json() as { services: Service[] };
+      const servicesData = await servicesResponse.json() as { services: DatabaseService[] };
       const services = servicesData.services || [];
       
       // Fetch content
@@ -65,9 +55,9 @@ export default function HomeClient() {
       
       setData({
         content: {
-          siteTitle: contentData.site_title || "Wildwoods Studio",
-          heroTitle: contentData.hero_title || "Wildwoods Studio",
-          heroSubtitle: contentData.hero_subtitle || "Connecting you to yourself, others, and the Earth.",
+          siteTitle: contentData.site_title || "",
+          heroTitle: contentData.hero_title || "",
+          heroSubtitle: contentData.hero_subtitle || "",
           contactPhone: contentData.contact_phone || "",
           contactEmail: contentData.contact_email || "",
         },
@@ -132,8 +122,7 @@ export default function HomeClient() {
         <div className="absolute inset-0 bg-background/85" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-sm text-muted">
-            &copy; {new Date().getFullYear()} Wildwoods Studio. All rights
-            reserved.
+            &copy; {new Date().getFullYear()}
           </p>
           <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
             {data.content.contactPhone && (

@@ -1,14 +1,25 @@
 import Link from "next/link";
 import { Clock } from "lucide-react";
-import { services as defaultServices, type Service } from "@/lib/mock-data";
+
+interface Service {
+  id: string;
+  name: string;
+  duration: number;
+  price: number;
+  description: string;
+}
 
 interface ServicesGridProps {
   services?: Service[];
 }
 
 export default function ServicesGrid({
-  services = defaultServices,
+  services,
 }: ServicesGridProps) {
+  if (!services || services.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-16">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">

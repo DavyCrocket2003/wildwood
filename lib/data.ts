@@ -1,10 +1,3 @@
-import {
-  services as fallbackServices,
-  reviews as fallbackReviews,
-  provider as fallbackProvider,
-  type Service,
-  type Review,
-} from "./mock-data";
 import { getDB } from "./db";
 
 // ISR revalidation interval in seconds (15 minutes)
@@ -36,9 +29,9 @@ export interface AppData {
   content: SiteContent;
   studioServices: DatabaseService[];
   natureServices: DatabaseService[];
-  bookableServices: Service[];
-  reviews: Review[];
-  provider: typeof fallbackProvider;
+  bookableServices: { id: string; name: string; duration: number; price: number; description: string }[];
+  reviews: unknown[];
+  provider: { name: string; title: string; phone: string; email: string; image: string };
 }
 
 // ── Slug generation ─────────────────────────────────────────────────
@@ -52,7 +45,7 @@ function toSlug(name: string): string {
 }
 
 // ── Convert DatabaseService → bookable Service[] (for BookingWizard) ─
-function toBookableServices(services: DatabaseService[]): Service[] {
+function toBookableServices(services: DatabaseService[]): { id: string; name: string; duration: number; price: number; description: string }[] {
   return services
     .filter((s) => s.is_active && s.price > 0 && s.duration > 0)
     .map((s) => ({
@@ -65,9 +58,9 @@ function toBookableServices(services: DatabaseService[]): Service[] {
 }
 
 // ── Main data fetch function (database only) ────────────────────────
-export async function getAppData(env?: any): Promise<AppData> {
+export async function getAppData(): Promise<AppData> {
   try {
-    const db = await getDB(env);
+    const db = await getDB();
     
     // Get content from database
     const contentResult = await db.prepare(
@@ -79,14 +72,14 @@ export async function getAppData(env?: any): Promise<AppData> {
       "SELECT id, category, title, description, price, duration, detail_text, is_active, has_detail_page FROM services ORDER BY category, title"
     ).bind().all();
     
-    // Process content data
+    // Process content data - start with empty values
     const contentData: SiteContent = {
-      siteTitle: "Wildwoods Studio",
-      heroTitle: "Wildwoods Studio", 
-      heroSubtitle: "Connecting you to yourself, others, and the Earth.",
-      contactPhone: fallbackProvider.phone,
-      contactEmail: fallbackProvider.email,
-      providerSubtitle: fallbackProvider.title,
+      siteTitle: "",
+      heroTitle: "", 
+      heroSubtitle: "",
+      contactPhone: "",
+      contactEmail: "",
+      providerSubtitle: "",
     };
     
     if (contentResult.results && contentResult.results.length > 0) {
@@ -117,78 +110,36 @@ export async function getAppData(env?: any): Promise<AppData> {
       });
     }
     
-    // If no services in database, use fallback
-    const services = dbServices.length > 0 ? dbServices : fallbackServices.map(s => ({
-      id: Number(s.id),
-      title: s.name,
-      description: s.description,
-      price: s.price,
-      duration: s.duration,
-      category: "studio" as const,
-      detail_text: s.description,
-      is_active: true,
-      has_detail_page: true,
-    }));
-    
     // Separate by category
-    const studioServices = services.filter(s => s.category === "studio");
-    const natureServices = services.filter(s => s.category === "nature");
+    const studioServices = dbServices.filter(s => s.category === "studio");
+    const natureServices = dbServices.filter(s => s.category === "nature");
     
     return {
       content: contentData,
       studioServices,
       natureServices,
-      bookableServices: toBookableServices(services),
-      reviews: fallbackReviews,
+      bookableServices: toBookableServices(dbServices),
+      reviews: [],
       provider: {
-        ...fallbackProvider,
+        name: "",
+        title: contentData.providerSubtitle,
         phone: contentData.contactPhone,
         email: contentData.contactEmail,
-        title: contentData.providerSubtitle,
+        image: "",
       },
     };
   } catch (err) {
     console.error("Failed to fetch data from database:", err);
-    return fallbackData();
+    throw err;
   }
-}
-
-// ── Fallback using existing mock data ───────────────────────────────
-function fallbackData(): AppData {
-  return {
-    content: {
-      siteTitle: "Wildwoods Studio",
-      heroTitle: "Wildwoods Studio",
-      heroSubtitle: "Connecting you to yourself, others, and the Earth.",
-      contactPhone: fallbackProvider.phone,
-      contactEmail: fallbackProvider.email,
-      providerSubtitle: fallbackProvider.title,
-    },
-    studioServices: fallbackServices.map((s) => ({
-      id: Number(s.id),
-      title: s.name,
-      description: s.description,
-      price: s.price,
-      duration: s.duration,
-      category: "studio" as const,
-      detail_text: s.description,
-      is_active: true,
-      has_detail_page: true,
-    })),
-    natureServices: [],
-    bookableServices: fallbackServices,
-    reviews: fallbackReviews,
-    provider: fallbackProvider,
-  };
 }
 
 // ── Lookup a single service by slug/id ─────────────────────────────────
 export async function getServiceBySlug(
   slug: string,
-  env?: any,
 ): Promise<DatabaseService | null> {
   try {
-    const db = await getDB(env);
+    const db = await getDB();
     const result = await db.prepare(
       "SELECT id, category, title, description, price, duration, detail_text, is_active, has_detail_page FROM services WHERE id = ?"
     ).bind(slug).first();
@@ -210,6 +161,6 @@ export async function getServiceBySlug(
     return null;
   } catch (err) {
     console.error("Failed to fetch service from database:", err);
-    return null;
+    throw err;
   }
 }

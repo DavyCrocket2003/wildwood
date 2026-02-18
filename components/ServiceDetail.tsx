@@ -4,20 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { EditableService } from "@/components/editable/EditableService";
 import { useAuth } from "@/components/auth/AuthProvider";
-
-interface Service {
-  id: number;
-  category: "studio" | "nature";
-  title: string;
-  description: string;
-  price: number;
-  duration: number;
-  detail_text: string;
-  is_active: boolean;
-}
+import { DatabaseService } from "@/lib/data";
 
 interface ServiceDetailProps {
-  service: Service;
+  service: DatabaseService;
 }
 
 export default function ServiceDetail({ service }: ServiceDetailProps) {

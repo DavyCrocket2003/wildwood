@@ -10,8 +10,6 @@ import { format } from "date-fns";
 
 import { ArrowLeft } from "lucide-react";
 
-import { services as defaultServices, type Service } from "@/lib/mock-data";
-
 import ServiceCard from "@/components/ServiceCard";
 
 import CalendarMock from "@/components/CalendarMock";
@@ -22,8 +20,19 @@ import Sidebar from "@/components/Sidebar";
 
 
 
-const steps = ["Service", "Time", "Details"];
+interface Service {
 
+  id: string;
+
+  name: string;
+
+  duration: number;
+
+  price: number;
+
+  description: string;
+
+}
 
 
 interface BookingWizardProps {
@@ -47,6 +56,8 @@ interface BookingWizardProps {
 }
 
 
+const steps = ["Service", "Time", "Details"];
+
 
 export default function BookingWizard({
 
@@ -56,7 +67,9 @@ export default function BookingWizard({
 
 }: BookingWizardProps) {
 
-  const services = bookableServices || defaultServices;
+  const services = bookableServices ?? [];
+
+
 
   const searchParams = useSearchParams();
 

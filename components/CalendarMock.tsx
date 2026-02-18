@@ -17,13 +17,19 @@ import {
   startOfDay,
 } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { timeSlots } from "@/lib/mock-data";
+
+interface TimeSlot {
+  id: string;
+  time: string;
+  available: boolean;
+}
 
 interface CalendarMockProps {
   selectedDate: Date | null;
   selectedTime: string | null;
   onSelectDate: (date: Date) => void;
   onSelectTime: (time: string) => void;
+  timeSlots?: TimeSlot[];
 }
 
 export default function CalendarMock({
@@ -31,6 +37,7 @@ export default function CalendarMock({
   selectedTime,
   onSelectDate,
   onSelectTime,
+  timeSlots = [],
 }: CalendarMockProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 1, 1));
 
@@ -111,22 +118,26 @@ export default function CalendarMock({
             Available Times for {format(selectedDate, "MMMM d, yyyy")}
           </h3>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {timeSlots.map((slot) => (
-              <button
-                key={slot.id}
-                disabled={!slot.available}
-                onClick={() => onSelectTime(slot.time)}
-                className={`rounded-lg border px-3 py-2.5 text-sm transition-all duration-150 ${
-                  !slot.available
-                    ? "cursor-not-allowed border-border/50 text-muted/40"
-                    : selectedTime === slot.time
-                      ? "border-accent bg-accent font-medium text-accent-foreground"
-                      : "border-border text-foreground hover:border-accent/50 hover:bg-surface-hover"
-                }`}
-              >
-                {slot.time}
-              </button>
-            ))}
+            {timeSlots.length === 0 ? (
+              <p className="col-span-full text-sm text-muted">No available time slots</p>
+            ) : (
+              timeSlots.map((slot) => (
+                <button
+                  key={slot.id}
+                  disabled={!slot.available}
+                  onClick={() => onSelectTime(slot.time)}
+                  className={`rounded-lg border px-3 py-2.5 text-sm transition-all duration-150 ${
+                    !slot.available
+                      ? "cursor-not-allowed border-border/50 text-muted/40"
+                      : selectedTime === slot.time
+                        ? "border-accent bg-accent font-medium text-accent-foreground"
+                        : "border-border text-foreground hover:border-accent/50 hover:bg-surface-hover"
+                  }`}
+                >
+                  {slot.time}
+                </button>
+              ))
+            )}
           </div>
         </div>
       )}

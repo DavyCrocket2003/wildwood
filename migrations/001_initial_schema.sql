@@ -38,14 +38,14 @@ CREATE TABLE IF NOT EXISTS bookings (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert default content values
+-- Insert default content values (empty - no fallbacks)
 INSERT OR IGNORE INTO content (key, value) VALUES
-  ('site_title', 'Wildwoods Studio'),
-  ('hero_title', 'Wildwoods Studio'),
-  ('hero_subtitle', 'Connecting you to yourself, others, and the Earth.'),
+  ('site_title', ''),
+  ('hero_title', ''),
+  ('hero_subtitle', ''),
   ('contact_phone', ''),
   ('contact_email', ''),
-  ('provider_subtitle', 'Somatic Educator & Nature Connection Facilitator');
+  ('provider_subtitle', '');
 
 -- Create indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_services_category ON services(category);

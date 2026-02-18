@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/lib/db";
 
-export const runtime = 'edge';
-
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -10,9 +8,7 @@ export async function GET(
   try {
     const { id } = await params;
     
-    // @ts-ignore - env is available in edge runtime
-    const env = request.env || {};
-    const db = await getDB(env);
+    const db = await getDB();
     // Get service from database
     const service = await db.prepare(
       "SELECT * FROM services WHERE id = ?"
@@ -38,7 +34,7 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    const { category, title, description, price, duration, detail_text, is_active, has_detail_page } = (await request.json()) as {
+    const { category, title, description, price, duration, detail_text, is_active } = (await request.json()) as {
       category: string;
       title: string;
       description?: string;
@@ -46,7 +42,6 @@ export async function PUT(
       duration: number;
       detail_text?: string;
       is_active?: boolean;
-      has_detail_page?: boolean;
     };
 
     // Check if user is admin
@@ -64,16 +59,14 @@ export async function PUT(
       return NextResponse.json({ error: "Invalid category" }, { status: 400 });
     }
 
-    // @ts-ignore - env is available in edge runtime
-    const env = request.env || {};
-    const db = await getDB(env);
+    const db = await getDB();
     // Update service
     const result = await db.prepare(
       `UPDATE services 
        SET category = ?, title = ?, description = ?, price = ?, duration = ?, 
-           detail_text = ?, is_active = ?, has_detail_page = ?, updated_at = CURRENT_TIMESTAMP
+           detail_text = ?, is_active = ?, updated_at = CURRENT_TIMESTAMP
        WHERE id = ?`
-    ).bind(category, title, description, price, duration, detail_text, is_active, has_detail_page, id).run();
+    ).bind(category, title, description, price, duration, detail_text, is_active, id).run();
 
     if (result.changes === 0) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
@@ -102,9 +95,7 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // @ts-ignore - env is available in edge runtime
-    const env = request.env || {};
-    const db = await getDB(env);
+    const db = await getDB();
     // Soft delete by setting is_active to false
     const result = await db.prepare(
       "UPDATE services SET is_active = false, updated_at = CURRENT_TIMESTAMP WHERE id = ?"

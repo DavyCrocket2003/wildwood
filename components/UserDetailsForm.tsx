@@ -124,8 +124,7 @@ export default function UserDetailsForm({ onSubmit }: UserDetailsFormProps) {
               Booking Confirmed!
             </h3>
             <p className="mt-2 text-sm text-muted">
-              Thank you for booking with Wildwoods Wellness. We&apos;ll send a
-              confirmation to your email shortly.
+              Thank you for booking. We&apos;ll send a confirmation to your email shortly.
             </p>
             <button
               onClick={() => setShowSuccess(false)}

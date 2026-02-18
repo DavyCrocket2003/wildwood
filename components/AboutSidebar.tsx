@@ -21,12 +21,12 @@ export default function AboutSidebar({ phone, email, onUpdate }: AboutSidebarPro
             alt="Emily Lacey"
             className="mb-4 h-28 w-28 rounded-full object-cover"
           />
-          <p className="text-sm font-medium text-accent">Founder, Wildwoods Studio</p>
+          <p className="text-sm font-medium text-accent">Founder</p>
           <p className="text-lg font-semibold">Emily Lacey</p>
           <div className="mx-auto mt-3 h-0.5 w-10 rounded-full bg-border" />
           <p className="mt-4 text-sm leading-relaxed text-muted">
             With a deep love for nature and holistic wellness, I created
-            Wildwoods Studio to help people reconnect — with themselves, with
+            this studio to help people reconnect — with themselves, with
             others, and with the natural world around them. Whether in the
             studio or out in the forest, every experience is designed to nurture
             mind, body, and spirit.
@@ -36,7 +36,7 @@ export default function AboutSidebar({ phone, email, onUpdate }: AboutSidebarPro
               <Phone className="h-3.5 w-3.5" />
               <EditableText
                 contentKey="contact_phone"
-                initialValue={phone || ""}
+                initialValue={phone}
                 as="span"
                 className=""
                 onUpdate={onUpdate}
@@ -46,7 +46,7 @@ export default function AboutSidebar({ phone, email, onUpdate }: AboutSidebarPro
               <Mail className="h-3.5 w-3.5" />
               <EditableText
                 contentKey="contact_email"
-                initialValue={email || ""}
+                initialValue={email}
                 as="span"
                 className=""
                 onUpdate={onUpdate}

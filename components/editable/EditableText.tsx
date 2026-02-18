@@ -6,7 +6,7 @@ import { useAuth } from "@/components/auth/AuthProvider";
 
 interface EditableTextProps {
   contentKey: string;
-  initialValue: string;
+  initialValue?: string;
   className?: string;
   as?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   placeholder?: string;
@@ -23,14 +23,12 @@ export function EditableText({
 }: EditableTextProps) {
   const { isAdmin, loading } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState("");
+  const [dbValue, setDbValue] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [hasFetched, setHasFetched] = useState(false);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
 
   // Fetch current value from database when component mounts
   useEffect(() => {
@@ -42,21 +40,23 @@ export function EditableText({
         if (response.ok) {
           const data = await response.json() as { value: string };
           setValue(data.value);
+          setDbValue(data.value);
         } else if (response.status === 404) {
-          // Content not found in database, use initial value
-          setValue(initialValue);
+          // No content in DB yet, leave empty
+          setDbValue("");
         }
       } catch (error) {
         console.error("Failed to fetch current value:", error);
-        // On error, use initial value
-        setValue(initialValue);
+        setDbValue("");
+      } finally {
+        setHasFetched(true);
       }
     };
 
-    if (contentKey) {
+    if (contentKey && !hasFetched) {
       fetchCurrentValue();
     }
-  }, [contentKey, initialValue]);
+  }, [contentKey]);
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -86,6 +86,7 @@ export function EditableText({
       }
 
       setIsEditing(false);
+      setDbValue(value); // Update dbValue to the saved value
       onUpdate?.();
     } catch (error) {
       setError("Failed to save. Please try again.");
@@ -96,7 +97,7 @@ export function EditableText({
   };
 
   const handleCancel = () => {
-    setValue(initialValue);
+    setValue(dbValue ?? "");
     setIsEditing(false);
     setError("");
   };

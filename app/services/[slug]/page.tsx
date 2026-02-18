@@ -4,8 +4,6 @@ import Navbar from "@/components/Navbar";
 import ServiceDetail from "@/components/ServiceDetail";
 import { getAppData, getServiceBySlug } from "@/lib/data";
 
-export const runtime = 'edge';
-
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
 }

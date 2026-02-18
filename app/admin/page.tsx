@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
             Admin Login
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Wildwoods Studio Admin Panel
+            Admin Panel
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>

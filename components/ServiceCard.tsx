@@ -1,7 +1,14 @@
 "use client";
 
 import { ChevronRight, Clock } from "lucide-react";
-import type { Service } from "@/lib/mock-data";
+
+interface Service {
+  id: string;
+  name: string;
+  duration: number;
+  price: number;
+  description: string;
+}
 
 interface ServiceCardProps {
   service: Service;

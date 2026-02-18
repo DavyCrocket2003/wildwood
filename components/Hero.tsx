@@ -9,8 +9,8 @@ interface HeroProps {
 }
 
 export default function Hero({
-  title = "Wildwoods Studio",
-  subtitle = "Connecting you to yourself, others, and the Earth.",
+  title,
+  subtitle,
 }: HeroProps) {
   return (
     <section className="relative flex min-h-[200px] items-center justify-center overflow-hidden sm:min-h-[260px]">

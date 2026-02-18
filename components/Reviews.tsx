@@ -1,7 +1,22 @@
 import { Star } from "lucide-react";
-import { reviews } from "@/lib/mock-data";
 
-export default function Reviews() {
+interface Review {
+  id: string;
+  rating: number;
+  text: string;
+  name: string;
+  date: string;
+}
+
+interface ReviewsProps {
+  reviews?: Review[];
+}
+
+export default function Reviews({ reviews }: ReviewsProps) {
+  if (!reviews || reviews.length === 0) {
+    return null;
+  }
+
   return (
     <section className="border-t border-border py-16">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">

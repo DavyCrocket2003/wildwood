@@ -6,7 +6,7 @@ import { useAuth } from "@/components/auth/AuthProvider";
 
 interface EditableTitleProps {
   contentKey: string;
-  initialValue: string;
+  initialValue?: string;
   className?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
   placeholder?: string;
@@ -21,14 +21,40 @@ export function EditableTitle({
 }: EditableTitleProps) {
   const { isAdmin, loading } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState("");
+  const [dbValue, setDbValue] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [hasFetched, setHasFetched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Fetch current value from database when component mounts
   useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
+    const fetchCurrentValue = async () => {
+      try {
+        // Convert camelCase key to snake_case for database lookup
+        const snakeKey = contentKey.replace(/([A-Z])/g, '_$1').toLowerCase();
+        const response = await fetch(`/api/content/${snakeKey}`);
+        if (response.ok) {
+          const data = await response.json() as { value: string };
+          setValue(data.value);
+          setDbValue(data.value);
+        } else if (response.status === 404) {
+          // No content in DB yet, leave empty
+          setDbValue("");
+        }
+      } catch (error) {
+        console.error("Failed to fetch current value:", error);
+        setDbValue("");
+      } finally {
+        setHasFetched(true);
+      }
+    };
+
+    if (contentKey && !hasFetched) {
+      fetchCurrentValue();
+    }
+  }, [contentKey]);
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -47,7 +73,10 @@ export function EditableTitle({
     setError("");
 
     try {
-      const response = await fetch(`/api/content/${contentKey}`, {
+      // Convert camelCase key to snake_case for database storage
+      const snakeKey = contentKey.replace(/([A-Z])/g, '_$1').toLowerCase();
+      
+      const response = await fetch(`/api/content/${snakeKey}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -60,6 +89,7 @@ export function EditableTitle({
       }
 
       setIsEditing(false);
+      setDbValue(value.trim());
     } catch (error) {
       setError("Failed to save. Please try again.");
       console.error("Save error:", error);
@@ -69,7 +99,7 @@ export function EditableTitle({
   };
 
   const handleCancel = () => {
-    setValue(initialValue);
+    setValue(dbValue ?? "");
     setIsEditing(false);
     setError("");
   };

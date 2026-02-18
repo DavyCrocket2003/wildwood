@@ -1,3 +1,5 @@
+import { getCloudflareContext } from '@opennextjs/cloudflare';
+
 type D1Like = {
   prepare: (sql: string) => {
     bind: (...params: any[]) => {
@@ -61,14 +63,12 @@ async function getLocalSQLite(): Promise<D1Like> {
   };
 }
 
-export async function getDB(env?: any): Promise<D1Like> {
-  // Check if we're in a Cloudflare Workers environment (production)
-  if (typeof globalThis !== 'undefined' && globalThis.caches) {
-    // We're in Cloudflare Workers edge runtime
-    if (!env || !env.DB) {
-      throw new Error('Database binding not available. Make sure D1 database is properly bound to the worker.');
-    }
-    return env.DB;
+export async function getDB(): Promise<D1Like> {
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    if (env.DB) return env.DB;
+  } catch {
+    // Not in Cloudflare runtime — fall through to local SQLite
   }
 
   // Fallback to development/local SQLite

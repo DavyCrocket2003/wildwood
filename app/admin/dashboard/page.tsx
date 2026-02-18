@@ -15,6 +15,7 @@ interface Service {
   duration: number;
   detail_text: string;
   is_active: boolean;
+  has_detail_page: boolean;
 }
 
 export default function AdminDashboard() {
@@ -30,6 +31,7 @@ export default function AdminDashboard() {
     duration: 60,
     detail_text: "",
     is_active: true,
+    has_detail_page: false,
   });
 
   useEffect(() => {
@@ -72,6 +74,7 @@ export default function AdminDashboard() {
           duration: 60,
           detail_text: "",
           is_active: true,
+          has_detail_page: false,
         });
         setShowAddForm(false);
         fetchServices();
