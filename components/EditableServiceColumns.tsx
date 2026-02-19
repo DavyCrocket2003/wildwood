@@ -58,8 +58,8 @@ function ServiceList({
               <div 
                 dangerouslySetInnerHTML={{ 
                   __html: DOMPurify.sanitize(service.description, {
-                    ALLOWED_TAGS: ['a', 'b', 'strong', 'i', 'em', 'br', 'ul', 'ol', 'li', 'p', 'h1', 'h2', 'h3'],
-                    ALLOWED_ATTR: ['href', 'target', 'rel'],
+                    ALLOWED_TAGS: ['a', 'b', 'strong', 'i', 'em', 'br', 'ul', 'ol', 'li', 'p', 'h1', 'h2', 'h3', 'u'],
+                    ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
                   })
                 }} 
                 className="mt-1 text-sm text-muted prose prose-slate max-w-none"
