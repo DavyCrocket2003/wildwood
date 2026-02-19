@@ -64,7 +64,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
       </h1>
       <div className="mt-3 h-0.5 w-12 rounded-full bg-accent-soft" />
 
-      {currentService.price !== null && currentService.duration !== null && (
+      {currentService.price !== null && currentService.duration !== null && currentService.price > 0 && (
         <div className="mt-4 flex items-center gap-4 text-sm text-muted">
           <span>{currentService.duration} min</span>
           <span className="font-medium text-accent">${currentService.price}</span>

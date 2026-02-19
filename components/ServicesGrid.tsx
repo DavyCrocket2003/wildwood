@@ -42,9 +42,11 @@ export default function ServicesGrid({
                     <Clock className="h-3.5 w-3.5" />
                     {service.duration} min
                   </span>
-                  <span className="font-medium text-accent">
-                    ${service.price}
-                  </span>
+                  {service.price > 0 && (
+                    <span className="font-medium text-accent">
+                      ${service.price}
+                    </span>
+                  )}
                 </div>
                 <p className="mt-2 text-sm text-muted">
                   {service.description}

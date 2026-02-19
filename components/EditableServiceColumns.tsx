@@ -64,14 +64,14 @@ function ServiceList({
                 }} 
                 className="mt-1 text-sm text-muted prose prose-slate max-w-none"
               />
-              {service.price !== null && service.duration !== null && (
+              {service.price !== null && service.duration !== null && service.price > 0 && (
                 <div className="mt-2 flex items-center gap-3 text-xs text-muted">
                   <span>{service.duration} min</span>
                   <span className="font-medium text-accent">${service.price}</span>
                 </div>
               )}
             </div>
-            {service.has_detail_page && (
+            {!!service.has_detail_page && (
               <span className="ml-4 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-0.5">
                 &#8594;
               </span>

@@ -88,9 +88,11 @@ export default function Sidebar({
                   <div className="my-2 border-t border-border" />
                   <div className="flex justify-between font-semibold">
                     <span className="text-foreground">Total</span>
-                    <span className="text-accent">
-                      ${selectedService.price}
-                    </span>
+                    {selectedService.price > 0 && (
+                      <span className="text-accent">
+                        ${selectedService.price}
+                      </span>
+                    )}
                   </div>
                 </>
               )}
