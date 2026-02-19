@@ -27,3 +27,8 @@ preview_bucket_name = "next-incremental-cache-local-preview"
 [[r2_buckets]]
 binding = "IMAGES"
 bucket_name = "wildwood-images"
+
+[observability]
+[observability.logs]
+enabled = false
+invocation_logs = true
