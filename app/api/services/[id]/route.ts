@@ -34,7 +34,7 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    const { category, title, description, price, duration, detail_text, is_active } = (await request.json()) as {
+    const { category, title, description, price, duration, detail_text, is_active, has_detail_page } = (await request.json()) as {
       category: string;
       title: string;
       description?: string;
@@ -42,6 +42,7 @@ export async function PUT(
       duration: number;
       detail_text?: string;
       is_active?: boolean;
+      has_detail_page?: boolean;
     };
 
     // Check if user is admin
@@ -64,9 +65,9 @@ export async function PUT(
     const result = await db.prepare(
       `UPDATE services 
        SET category = ?, title = ?, description = ?, price = ?, duration = ?, 
-           detail_text = ?, is_active = ?, updated_at = CURRENT_TIMESTAMP
+           detail_text = ?, is_active = ?, has_detail_page = ?, updated_at = CURRENT_TIMESTAMP
        WHERE id = ?`
-    ).bind(category, title, description, price, duration, detail_text, is_active, id).run();
+    ).bind(category, title, description, price, duration, detail_text, is_active, has_detail_page, id).run();
 
     if (result.meta.changes === 0) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
