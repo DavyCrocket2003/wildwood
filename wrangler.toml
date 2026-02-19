@@ -1,6 +1,5 @@
 pages_build_output_dir = ".open-next"
 name = "wildwood-booking"
-main = ".open-next/worker.js"
 
 compatibility_date = "2026-02-15"
 compatibility_flags = [
