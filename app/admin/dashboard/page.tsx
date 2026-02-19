@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Edit, Trash2, Eye } from "lucide-react";
+import { Plus, Edit, Trash2, Eye, Maximize2, X } from "lucide-react";
 import { EditableService } from "@/components/editable/EditableService";
 import { useAuth } from "@/components/auth/AuthProvider";
 import Link from "next/link";
@@ -33,6 +33,8 @@ export default function AdminDashboard() {
     is_active: true,
     has_detail_page: false,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalField, setModalField] = useState<"description" | "detail_text" | null>(null);
 
   useEffect(() => {
     fetchServices();
@@ -120,13 +122,15 @@ export default function AdminDashboard() {
         <div className="bg-white shadow rounded-lg p-6 mb-8">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-semibold text-gray-900">Services</h2>
-            <button
-              onClick={() => setShowAddForm(!showAddForm)}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-            >
-              <Plus className="h-4 w-4" />
-              Add Service
-            </button>
+            {!showAddForm && (
+              <button
+                onClick={() => setShowAddForm(!showAddForm)}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              >
+                <Plus className="h-4 w-4" />
+                Add Service
+              </button>
+            )}
           </div>
 
           {showAddForm && (
@@ -190,25 +194,51 @@ export default function AdminDashboard() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Description
                 </label>
-                <textarea
-                  value={newService.description}
-                  onChange={(e) => setNewService({ ...newService, description: e.target.value })}
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  rows={3}
-                  placeholder="Service description"
-                />
+                <div className="flex gap-2">
+                  <textarea
+                    value={newService.description}
+                    onChange={(e) => setNewService({ ...newService, description: e.target.value })}
+                    className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows={3}
+                    placeholder="Service description"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setModalField("description");
+                      setIsModalOpen(true);
+                    }}
+                    className="p-2 text-gray-600 hover:text-blue-600 border border-gray-300 rounded-md hover:border-blue-500"
+                    title="Expand to full screen"
+                  >
+                    <Maximize2 className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
               <div className="mt-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Detail Text
                 </label>
-                <textarea
-                  value={newService.detail_text}
-                  onChange={(e) => setNewService({ ...newService, detail_text: e.target.value })}
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  rows={4}
-                  placeholder="Detailed service information"
-                />
+                <div className="flex gap-2">
+                  <textarea
+                    value={newService.detail_text}
+                    onChange={(e) => setNewService({ ...newService, detail_text: e.target.value })}
+                    className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows={4}
+                    placeholder="Detailed service information"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setModalField("detail_text");
+                      setIsModalOpen(true);
+                    }}
+                    className="p-2 text-gray-600 hover:text-blue-600 border border-gray-300 rounded-md hover:border-blue-500"
+                    title="Expand to full screen"
+                  >
+                    <Maximize2 className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
               <div className="mt-4 flex items-center gap-2">
                 <input
@@ -220,6 +250,18 @@ export default function AdminDashboard() {
                 />
                 <label htmlFor="new_is_active" className="text-sm font-medium text-gray-700">
                   Active (visible to users)
+                </label>
+              </div>
+              <div className="mt-4 flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="new_has_detail_page"
+                  checked={newService.has_detail_page}
+                  onChange={(e) => setNewService({ ...newService, has_detail_page: e.target.checked })}
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                />
+                <label htmlFor="new_has_detail_page" className="text-sm font-medium text-gray-700">
+                  Has detail page (links to service details)
                 </label>
               </div>
               <div className="mt-4 flex gap-2">
@@ -274,6 +316,52 @@ export default function AdminDashboard() {
           )}
         </div>
       </div>
+      
+      {isModalOpen && modalField && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg w-full h-full max-h-[90vh] max-w-4xl flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
+              <h3 className="text-lg font-semibold text-gray-900">
+                Edit {modalField === "description" ? "Description" : "Detail Text"}
+              </h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="p-2 text-gray-600 hover:text-gray-900"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="flex-1 p-4 overflow-hidden">
+              <textarea
+                value={modalField === "description" ? newService.description : newService.detail_text}
+                onChange={(e) => {
+                  if (modalField === "description") {
+                    setNewService({ ...newService, description: e.target.value });
+                  } else {
+                    setNewService({ ...newService, detail_text: e.target.value });
+                  }
+                }}
+                className="w-full h-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-sm"
+                placeholder={modalField === "description" ? "Service description" : "Detailed service information"}
+              />
+            </div>
+            <div className="flex items-center justify-end gap-3 p-4 border-t border-gray-200 flex-shrink-0">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="px-4 py-2 text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              >
+                Apply Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

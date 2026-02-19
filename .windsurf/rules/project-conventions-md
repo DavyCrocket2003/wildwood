@@ -19,3 +19,8 @@ trigger: always_on
 - **Environment variables access** - Use `request.env` for Cloudflare secrets in production, with `process.env` as fallback for local development
 - **No Node.js APIs** - Edge runtime doesn't support Node.js APIs, use Web APIs instead
 - **Static generation limitations** - Pages using edge runtime cannot be statically generated during build time
+
+## D1 Database Access Patterns
+
+- **Dynamic pages with D1 access** - Every page that touches D1 must include `export const dynamic = 'force-dynamic';` (even if it already has params or searchParams)
+- **Dynamic routes pattern** - Stick with the sync `getDB()` + `react.cache()` pattern for dynamic routes (you're already on it)

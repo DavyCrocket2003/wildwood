@@ -1,19 +1,17 @@
-'use client';
-
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import BookingWizard from "@/components/BookingWizard";
 import { getAppData } from "@/lib/data";
 import { Suspense } from "react";
 
-export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 export default async function BookPage() {
   const data = await getAppData();
 
   return (
     <>
-      <Navbar phone={data.content.contactPhone} siteTitle={data.content.siteTitle} />
+      {/* <Navbar phone={data.content.contactPhone} siteTitle={data.content.siteTitle} /> */}
       <div className="px-4 py-8 sm:px-6">
         <Link
           href="/"
@@ -25,7 +23,7 @@ export default async function BookPage() {
           <BookingWizard
             bookableServices={data.bookableServices}
             providerData={data.provider}
-          />
+            />
         </Suspense>
       </div>
     </>

@@ -13,7 +13,7 @@
   "/api/revalidate/route": "app/api/revalidate/route.js",
   "/api/services/[id]/route": "app/api/services/[id]/route.js",
   "/api/services/route": "app/api/services/route.js",
-  "/book/page": "app-edge-has-no-entrypoint",
+  "/book/page": "app/book/page.js",
   "/page": "app/page.js",
-  "/services/[slug]/page": "app-edge-has-no-entrypoint"
+  "/services/[slug]/page": "app/services/[slug]/page.js"
 }

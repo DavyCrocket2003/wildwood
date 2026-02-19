@@ -67,7 +67,7 @@ export default function BookingWizard({
 
 }: BookingWizardProps) {
 
-  const services = bookableServices ?? [];
+  const services = bookableServices || [];
 
 
 

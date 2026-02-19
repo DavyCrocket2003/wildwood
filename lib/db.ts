@@ -1,13 +1,9 @@
-// lib/db.ts — Official OpenNext async way for rock-solid reliability
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { cache } from "react";
+// lib/db.ts
+import { getCloudflareContext } from '@opennextjs/cloudflare';
+import { cache } from 'react';
+import type { D1Database } from '@cloudflare/workers-types';
 
-export const getDB = cache(async (): Promise<D1Database> => {
-  const { env } = await getCloudflareContext({ async: true });
-
-  if (!env?.DB) {
-    throw new Error("D1 database binding (DB) not found. Check wrangler.toml + Pages dashboard binding.");
-  }
-
-  return env.DB;
+export const getDB = cache((): D1Database => {
+  const { env } = getCloudflareContext();  // ← sync, no {async: true}
+  return env.DB;   // make sure the binding name matches your wrangler.toml
 });

@@ -1,3 +1,4 @@
+// lib/data.ts
 import { getDB } from "./db";
 
 // ISR revalidation interval in seconds (15 minutes)
@@ -60,8 +61,12 @@ function toBookableServices(services: DatabaseService[]): { id: string; name: st
 // ── Main data fetch function (database only) ────────────────────────
 export async function getAppData(): Promise<AppData> {
   try {
-    const db = await getDB();
-    
+    const db = getDB();
+
+    if (!db) {
+      throw new Error("D1 database binding 'DB' not found. Check wrangler.toml + dashboard.");
+    }
+
     // Get content from database
     const contentResult = await db.prepare(
       "SELECT key, value FROM content"
@@ -84,7 +89,6 @@ export async function getAppData(): Promise<AppData> {
     
     if (contentResult.results && contentResult.results.length > 0) {
       contentResult.results.forEach((row: any) => {
-        // Map snake_case database keys to camelCase for consistency
         const camelKey = row.key.replace(/_([a-z])/g, (match: string, letter: string) => 
           letter.toUpperCase()
         );
@@ -140,10 +144,15 @@ export async function getServiceBySlug(
   slug: string,
 ): Promise<DatabaseService | null> {
   try {
-    const db = await getDB();
+    const db = getDB();
+
+    if (!db) {
+      throw new Error("D1 database binding 'DB' not found.");
+    }
+
     const result = await db.prepare(
       "SELECT id, category, title, description, price, duration, detail_text, is_active, has_detail_page FROM services WHERE id = ?"
-    ).bind(slug).first();
+    ).bind(Number(slug)).first();
     
     if (result) {
       const row = result as Record<string, unknown>;

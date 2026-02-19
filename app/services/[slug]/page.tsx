@@ -1,12 +1,10 @@
-'use client';
-
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import ServiceDetail from "@/components/ServiceDetail";
 import { getAppData, getServiceBySlug } from "@/lib/data";
 
-export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;

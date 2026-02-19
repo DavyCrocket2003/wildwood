@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Edit, Save, X } from "lucide-react";
+import { Edit, Save, X, Maximize2 } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 interface ServiceData {
@@ -28,6 +28,8 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
   const [editedService, setEditedService] = useState<ServiceData>(service);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalField, setModalField] = useState<"description" | "detail_text" | null>(null);
 
   useEffect(() => {
     setEditedService(service);
@@ -155,25 +157,51 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Description
             </label>
-            <textarea
-              value={editedService.description}
-              onChange={(e) => setEditedService({ ...editedService, description: e.target.value })}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              rows={3}
-              placeholder="Service description"
-            />
+            <div className="flex gap-2">
+              <textarea
+                value={editedService.description}
+                onChange={(e) => setEditedService({ ...editedService, description: e.target.value })}
+                className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows={3}
+                placeholder="Service description"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setModalField("description");
+                  setIsModalOpen(true);
+                }}
+                className="p-2 text-gray-600 hover:text-blue-600 border border-gray-300 rounded-md hover:border-blue-500"
+                title="Expand to full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
+            </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Detail Text
             </label>
-            <textarea
-              value={editedService.detail_text}
-              onChange={(e) => setEditedService({ ...editedService, detail_text: e.target.value })}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              rows={4}
-              placeholder="Detailed service information"
-            />
+            <div className="flex gap-2">
+              <textarea
+                value={editedService.detail_text}
+                onChange={(e) => setEditedService({ ...editedService, detail_text: e.target.value })}
+                className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows={4}
+                placeholder="Detailed service information"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setModalField("detail_text");
+                  setIsModalOpen(true);
+                }}
+                className="p-2 text-gray-600 hover:text-blue-600 border border-gray-300 rounded-md hover:border-blue-500"
+                title="Expand to full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <input
@@ -230,6 +258,52 @@ export function EditableService({ service, onUpdate, className = "" }: EditableS
           >
             <Edit className="h-4 w-4" />
           </button>
+        </div>
+      )}
+      
+      {isModalOpen && modalField && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg w-full h-full max-h-[90vh] max-w-4xl flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
+              <h3 className="text-lg font-semibold text-gray-900">
+                Edit {modalField === "description" ? "Description" : "Detail Text"}
+              </h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="p-2 text-gray-600 hover:text-gray-900"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="flex-1 p-4 overflow-hidden">
+              <textarea
+                value={modalField === "description" ? editedService.description : editedService.detail_text}
+                onChange={(e) => {
+                  if (modalField === "description") {
+                    setEditedService({ ...editedService, description: e.target.value });
+                  } else {
+                    setEditedService({ ...editedService, detail_text: e.target.value });
+                  }
+                }}
+                className="w-full h-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-sm"
+                placeholder={modalField === "description" ? "Service description" : "Detailed service information"}
+              />
+            </div>
+            <div className="flex items-center justify-end gap-3 p-4 border-t border-gray-200 flex-shrink-0">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="px-4 py-2 text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              >
+                Apply Changes
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
