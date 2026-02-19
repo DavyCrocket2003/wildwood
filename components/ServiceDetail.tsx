@@ -62,7 +62,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
       <h1 className="text-3xl font-semibold text-foreground sm:text-4xl">
         {title}
       </h1>
-      <div className="mt-3 h-0.5 w-12 rounded-full bg-accent" />
+      <div className="mt-3 h-0.5 w-12 rounded-full bg-accent-soft" />
 
       {currentService.price !== null && currentService.duration !== null && (
         <div className="mt-4 flex items-center gap-4 text-sm text-muted">

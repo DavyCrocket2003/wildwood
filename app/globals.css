@@ -6,8 +6,9 @@
   --color-background: #1A1A1A;
   --color-surface: #2A2A2A;
   --color-surface-hover: #333333;
-  --color-accent: #BB9F77;
-  --color-accent-hover: #CDBB9E;
+  --color-accent: #C46A2D;          /* Primary action - burnt amber */
+  --color-accent-hover: #E0893E;    /* Lifted hover - brighter amber */
+  --color-accent-soft: #BB9F77;     /* Subtle highlights / icons - gold */
   --color-accent-foreground: #1A1A1A;
   --color-foreground: #EDEDED;
   --color-muted: #CCCCCC;

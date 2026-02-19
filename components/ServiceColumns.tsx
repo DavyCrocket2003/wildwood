@@ -59,7 +59,7 @@ export default function ServiceColumns({
         {/* In Studio */}
         <div>
           <div className="mb-4 flex items-center gap-2">
-            <Home className="h-5 w-5 text-accent" />
+            <Home className="h-5 w-5 text-accent-soft" />
             <h2 className="text-xl font-semibold text-foreground">In Studio</h2>
           </div>
           <ServiceList services={studioServices} />
@@ -68,7 +68,7 @@ export default function ServiceColumns({
         {/* In Nature */}
         <div>
           <div className="mb-4 flex items-center gap-2">
-            <Trees className="h-5 w-5 text-accent" />
+            <Trees className="h-5 w-5 text-accent-soft" />
             <h2 className="text-xl font-semibold text-foreground">In Nature</h2>
           </div>
           <ServiceList services={natureServices} />
