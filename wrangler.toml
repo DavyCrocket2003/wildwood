@@ -7,9 +7,9 @@ compatibility_flags = [
 ]
 
 # Required for OpenNext revalidation / on-demand ISR
-# [[services]]
-# binding = "WORKER_SELF_REFERENCE"
-# service = "wildwood-booking"
+[[services]]
+binding = "WORKER_SELF_REFERENCE"
+service = "wildwood"
 
 # Your D1 database
 [[d1_databases]]
