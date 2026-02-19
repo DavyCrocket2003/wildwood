@@ -108,6 +108,12 @@
       "namedRegex": "^/api/content(?:/)?$"
     },
     {
+      "page": "/api/debug-db",
+      "regex": "^/api/debug\\-db(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/debug\\-db(?:/)?$"
+    },
+    {
       "page": "/api/revalidate",
       "regex": "^/api/revalidate(?:/)?$",
       "routeKeys": {},

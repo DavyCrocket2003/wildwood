@@ -6,6 +6,11 @@ compatibility_flags = [
   "global_fetch_strictly_public"
 ]
 
+# ←←← ADD THIS SECTION (required for CSS/JS/images)
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
 # Required for OpenNext revalidation / on-demand ISR
 [[services]]
 binding = "WORKER_SELF_REFERENCE"
@@ -17,7 +22,7 @@ binding = "DB"
 database_name = "wildwood-db"
 database_id = "36a4ab82-29f5-4592-b5f7-58907276cc7f"
 
-# Incremental cache R2 bucket (this was causing the 403)
+# Incremental cache R2 bucket
 [[r2_buckets]]
 binding = "NEXT_INC_CACHE_R2_BUCKET"
 bucket_name = "next-incremental-cache-local"

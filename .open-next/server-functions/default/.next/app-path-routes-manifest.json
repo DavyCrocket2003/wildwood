@@ -9,6 +9,7 @@
   "/api/auth/status/route": "/api/auth/status",
   "/api/content/[key]/route": "/api/content/[key]",
   "/api/content/route": "/api/content",
+  "/api/debug-db/route": "/api/debug-db",
   "/api/revalidate/route": "/api/revalidate",
   "/api/services/[id]/route": "/api/services/[id]",
   "/api/services/route": "/api/services",

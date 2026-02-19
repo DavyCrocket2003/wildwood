@@ -1,19 +1,19 @@
 globalThis.openNextDebug = false;globalThis.openNextVersion = "3.9.16";
 
-// node_modules/.pnpm/@opennextjs+cloudflare@1.16.5_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19._0429ed203728ea1b1961428cd48aefc5/node_modules/@opennextjs/cloudflare/dist/api/durable-objects/sharded-tag-cache.js
+// node_modules/@opennextjs/cloudflare/dist/api/durable-objects/sharded-tag-cache.js
 import { DurableObject } from "cloudflare:workers";
 
-// node_modules/.pnpm/@opennextjs+cloudflare@1.16.5_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19._0429ed203728ea1b1961428cd48aefc5/node_modules/@opennextjs/cloudflare/dist/api/cloudflare-context.js
+// node_modules/@opennextjs/cloudflare/dist/api/cloudflare-context.js
 var cloudflareContextSymbol = Symbol.for("__cloudflare-context__");
 
-// node_modules/.pnpm/@opennextjs+cloudflare@1.16.5_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19._0429ed203728ea1b1961428cd48aefc5/node_modules/@opennextjs/cloudflare/dist/api/overrides/internal.js
+// node_modules/@opennextjs/cloudflare/dist/api/overrides/internal.js
 var debugCache = (name, ...args) => {
   if (process.env.NEXT_PRIVATE_DEBUG_CACHE) {
     console.log(`[${name}] `, ...args);
   }
 };
 
-// node_modules/.pnpm/@opennextjs+cloudflare@1.16.5_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19._0429ed203728ea1b1961428cd48aefc5/node_modules/@opennextjs/cloudflare/dist/api/durable-objects/sharded-tag-cache.js
+// node_modules/@opennextjs/cloudflare/dist/api/durable-objects/sharded-tag-cache.js
 var DOShardedTagCache = class extends DurableObject {
   sql;
   constructor(state, env) {

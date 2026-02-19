@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronRight, Clock } from "lucide-react";
+import DOMPurify from "isomorphic-dompurify";
 
 interface Service {
   id: string;
@@ -41,7 +42,15 @@ export default function ServiceCard({
           </span>
           <span className="font-medium text-accent">${service.price}</span>
         </div>
-        <p className="mt-2 text-sm text-muted">{service.description}</p>
+        <div 
+          dangerouslySetInnerHTML={{ 
+            __html: DOMPurify.sanitize(service.description, {
+              ALLOWED_TAGS: ['a', 'b', 'strong', 'i', 'em', 'br', 'ul', 'ol', 'li', 'p', 'h1', 'h2', 'h3'],
+              ALLOWED_ATTR: ['href', 'target', 'rel'],
+            })
+          }} 
+          className="mt-2 text-sm text-muted prose prose-slate max-w-none"
+        />
       </div>
       <ChevronRight
         className={`ml-4 h-5 w-5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 ${

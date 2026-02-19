@@ -1,16 +1,6 @@
 {
   "version": 1,
   "functions": {
-    "/": {},
-    "/api/admin/data": {},
-    "/api/auth/login": {},
-    "/api/auth/logout": {},
-    "/api/auth/status": {},
-    "/api/content": {},
-    "/api/content/[key]": {},
-    "/api/revalidate": {},
-    "/api/services": {},
-    "/api/services/[id]": {},
     "/book": {},
     "/services/[slug]": {}
   }

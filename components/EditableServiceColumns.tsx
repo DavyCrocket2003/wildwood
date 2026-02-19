@@ -6,6 +6,7 @@ import { Trees, Home, Edit, Plus } from "lucide-react";
 import { EditableService } from "@/components/editable/EditableService";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { DatabaseService } from "@/lib/data";
+import DOMPurify from "isomorphic-dompurify";
 
 interface ServiceColumnsProps {
   studioServices?: DatabaseService[];
@@ -54,7 +55,15 @@ function ServiceList({
               <h3 className="text-base font-semibold text-foreground">
                 {service.title}
               </h3>
-              <p className="mt-1 text-sm text-muted">{service.description}</p>
+              <div 
+                dangerouslySetInnerHTML={{ 
+                  __html: DOMPurify.sanitize(service.description, {
+                    ALLOWED_TAGS: ['a', 'b', 'strong', 'i', 'em', 'br', 'ul', 'ol', 'li', 'p', 'h1', 'h2', 'h3'],
+                    ALLOWED_ATTR: ['href', 'target', 'rel'],
+                  })
+                }} 
+                className="mt-1 text-sm text-muted prose prose-slate max-w-none"
+              />
               {service.price !== null && service.duration !== null && (
                 <div className="mt-2 flex items-center gap-3 text-xs text-muted">
                   <span>{service.duration} min</span>

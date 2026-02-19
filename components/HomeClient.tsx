@@ -37,6 +37,7 @@ export default function HomeClient() {
     natureServices: [],
   });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchData();
@@ -44,15 +45,24 @@ export default function HomeClient() {
 
   const fetchData = async () => {
     try {
-      // Fetch services from database
+      setError(null);
+      console.log("🚀 Starting fetchData...");
+
+      // Services
       const servicesResponse = await fetch("/api/services");
+      console.log("📡 /api/services status:", servicesResponse.status);
+      if (!servicesResponse.ok) throw new Error(`Services failed: ${servicesResponse.status}`);
       const servicesData = await servicesResponse.json() as { services: DatabaseService[] };
       const services = servicesData.services || [];
-      
-      // Fetch content
+
+      // Content — this is the most likely culprit (your routes show /api/content/[key], not plain /api/content)
       const contentResponse = await fetch("/api/content");
+      console.log("📡 /api/content status:", contentResponse.status);
+      if (!contentResponse.ok) {
+        throw new Error(`Content failed: ${contentResponse.status} — check if this route exists!`);
+      }
       const contentData = await contentResponse.json() as { [key: string]: string };
-      
+
       setData({
         content: {
           siteTitle: contentData.site_title || "",
@@ -64,12 +74,25 @@ export default function HomeClient() {
         studioServices: services.filter(s => s.category === "studio" && s.is_active),
         natureServices: services.filter(s => s.category === "nature" && s.is_active),
       });
-    } catch (error) {
-      console.error("Failed to fetch data:", error);
+    } catch (err: any) {
+      console.error("❌ fetchData failed:", err);
+      setError(err.message || "Unknown error loading data");
     } finally {
       setLoading(false);
     }
   };
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500 text-center px-4">
+        <div>
+          <p className="text-xl font-bold mb-2">⚠️ Error loading page</p>
+          <p>{error}</p>
+          <p className="text-sm mt-4 text-muted">Check browser console for details</p>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -79,68 +102,37 @@ export default function HomeClient() {
     );
   }
 
+  // ←←← Your original return JSX stays exactly the same from here down
   return (
     <>
       <Navbar phone={data.content.contactPhone} siteTitle={data.content.siteTitle} />
-      <Hero
-        title={data.content.heroTitle}
-        subtitle={data.content.heroSubtitle}
-      />
+      <Hero title={data.content.heroTitle} subtitle={data.content.heroSubtitle} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 py-10 lg:flex-row">
-          {/* Mobile: sidebar first */}
           <div className="lg:hidden">
-            <AboutSidebar
-              phone={data.content.contactPhone}
-              email={data.content.contactEmail}
-              onUpdate={fetchData}
-            />
+            <AboutSidebar phone={data.content.contactPhone} email={data.content.contactEmail} onUpdate={fetchData} />
           </div>
-
-          {/* Main content: service columns */}
-          <EditableServiceColumns
-            studioServices={data.studioServices}
-            natureServices={data.natureServices}
-          />
-
-          {/* Desktop: sidebar on the right */}
+          <EditableServiceColumns studioServices={data.studioServices} natureServices={data.natureServices} />
           <div className="hidden lg:block">
-            <AboutSidebar
-              phone={data.content.contactPhone}
-              email={data.content.contactEmail}
-              onUpdate={fetchData}
-            />
+            <AboutSidebar phone={data.content.contactPhone} email={data.content.contactEmail} onUpdate={fetchData} />
           </div>
         </div>
       </div>
 
       <footer className="relative border-t border-border py-10 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/flowers-forest.jpg')" }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/flowers-forest.jpg')" }} />
         <div className="absolute inset-0 bg-background/85" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-sm text-muted">
-            &copy; {new Date().getFullYear()}
-          </p>
+          <p className="text-sm text-muted">&copy; {new Date().getFullYear()}</p>
           <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
             {data.content.contactPhone && (
-              <a
-                href={`tel:${data.content.contactPhone}`}
-                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
-              >
-                <Phone className="h-3.5 w-3.5" />
-                {data.content.contactPhone}
+              <a href={`tel:${data.content.contactPhone}`} className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground">
+                <Phone className="h-3.5 w-3.5" /> {data.content.contactPhone}
               </a>
             )}
             {data.content.contactEmail && (
-              <a
-                href={`mailto:${data.content.contactEmail}`}
-                className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground"
-              >
-                <Mail className="h-3.5 w-3.5" />
-                {data.content.contactEmail}
+              <a href={`mailto:${data.content.contactEmail}`} className="inline-flex items-center gap-1.5 no-underline transition-colors hover:text-foreground">
+                <Mail className="h-3.5 w-3.5" /> {data.content.contactEmail}
               </a>
             )}
           </div>
@@ -148,4 +140,4 @@ export default function HomeClient() {
       </footer>
     </>
   );
-}
+} 

@@ -40,7 +40,7 @@ var __toESM = (mod3, isNodeMode, target) => (target = mod3 != null ? __create(__
 ));
 var __toCommonJS = (mod3) => __copyProps(__defProp({}, "__esModule", { value: true }), mod3);
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/utils/error.js
+// node_modules/@opennextjs/aws/dist/utils/error.js
 function isOpenNextError(e) {
   try {
     return "__openNextInternal" in e;
@@ -50,7 +50,7 @@ function isOpenNextError(e) {
 }
 var IgnorableError, FatalError;
 var init_error = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/utils/error.js"() {
+  "node_modules/@opennextjs/aws/dist/utils/error.js"() {
     IgnorableError = class extends Error {
       __openNextInternal = true;
       canIgnore = true;
@@ -72,7 +72,7 @@ var init_error = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/adapters/logger.js
+// node_modules/@opennextjs/aws/dist/adapters/logger.js
 function debug(...args) {
   if (globalThis.openNextDebug) {
     console.log(...args);
@@ -115,7 +115,7 @@ function getOpenNextErrorLogLevel() {
 }
 var DOWNPLAYED_ERROR_LOGS, isDownplayedErrorLog;
 var init_logger = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/adapters/logger.js"() {
+  "node_modules/@opennextjs/aws/dist/adapters/logger.js"() {
     init_error();
     DOWNPLAYED_ERROR_LOGS = [
       {
@@ -128,7 +128,7 @@ var init_logger = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/http/util.js
+// node_modules/@opennextjs/aws/dist/http/util.js
 function parseSetCookieHeader(cookies) {
   if (!cookies) {
     return [];
@@ -155,7 +155,7 @@ function getQueryFromIterator(it) {
 }
 var parseHeaders, convertHeader;
 var init_util = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/http/util.js"() {
+  "node_modules/@opennextjs/aws/dist/http/util.js"() {
     init_logger();
     parseHeaders = (headers) => {
       const result = {};
@@ -201,7 +201,7 @@ var init_node_module = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/utils/stream.js
+// node_modules/@opennextjs/aws/dist/utils/stream.js
 import { ReadableStream as ReadableStream2 } from "node:stream/web";
 function emptyReadableStream() {
   if (process.env.OPEN_NEXT_FORCE_NON_EMPTY_RESPONSE === "true") {
@@ -221,23 +221,23 @@ function emptyReadableStream() {
 }
 var maybeSomethingBuffer;
 var init_stream = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/utils/stream.js"() {
+  "node_modules/@opennextjs/aws/dist/utils/stream.js"() {
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/converters/utils.js
+// node_modules/@opennextjs/aws/dist/overrides/converters/utils.js
 function getQueryFromSearchParams(searchParams) {
   return getQueryFromIterator(searchParams.entries());
 }
 var init_utils = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/converters/utils.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/converters/utils.js"() {
     init_util();
   }
 });
 
-// node_modules/.pnpm/cookie@1.1.1/node_modules/cookie/dist/index.js
+// node_modules/cookie/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/.pnpm/cookie@1.1.1/node_modules/cookie/dist/index.js"(exports) {
+  "node_modules/cookie/dist/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.parseCookie = parseCookie;
@@ -484,7 +484,7 @@ var require_dist = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/converters/edge.js
+// node_modules/@opennextjs/aws/dist/overrides/converters/edge.js
 var edge_exports = {};
 __export(edge_exports, {
   default: () => edge_default
@@ -492,7 +492,7 @@ __export(edge_exports, {
 import { Buffer as Buffer2 } from "node:buffer";
 var import_cookie, NULL_BODY_STATUSES, converter, edge_default;
 var init_edge = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/converters/edge.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/converters/edge.js"() {
     import_cookie = __toESM(require_dist(), 1);
     init_util();
     init_utils();
@@ -574,7 +574,7 @@ var init_edge = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/wrappers/cloudflare-node.js
+// node_modules/@opennextjs/aws/dist/overrides/wrappers/cloudflare-node.js
 var cloudflare_node_exports = {};
 __export(cloudflare_node_exports, {
   default: () => cloudflare_node_default
@@ -582,7 +582,7 @@ __export(cloudflare_node_exports, {
 import { Writable } from "node:stream";
 var NULL_BODY_STATUSES2, handler, cloudflare_node_default;
 var init_cloudflare_node = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/wrappers/cloudflare-node.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/wrappers/cloudflare-node.js"() {
     NULL_BODY_STATUSES2 = /* @__PURE__ */ new Set([101, 204, 205, 304]);
     handler = async (handler3, converter2) => async (request, env, ctx, abortSignal) => {
       globalThis.process = process;
@@ -674,14 +674,14 @@ var init_cloudflare_node = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/tagCache/dummy.js
+// node_modules/@opennextjs/aws/dist/overrides/tagCache/dummy.js
 var dummy_exports = {};
 __export(dummy_exports, {
   default: () => dummy_default
 });
 var dummyTagCache, dummy_default;
 var init_dummy = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/tagCache/dummy.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/tagCache/dummy.js"() {
     dummyTagCache = {
       name: "dummy",
       mode: "original",
@@ -702,14 +702,14 @@ var init_dummy = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/queue/dummy.js
+// node_modules/@opennextjs/aws/dist/overrides/queue/dummy.js
 var dummy_exports2 = {};
 __export(dummy_exports2, {
   default: () => dummy_default2
 });
 var dummyQueue, dummy_default2;
 var init_dummy2 = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/queue/dummy.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/queue/dummy.js"() {
     init_error();
     dummyQueue = {
       name: "dummy",
@@ -721,14 +721,14 @@ var init_dummy2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/incrementalCache/dummy.js
+// node_modules/@opennextjs/aws/dist/overrides/incrementalCache/dummy.js
 var dummy_exports3 = {};
 __export(dummy_exports3, {
   default: () => dummy_default3
 });
 var dummyIncrementalCache, dummy_default3;
 var init_dummy3 = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/incrementalCache/dummy.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/incrementalCache/dummy.js"() {
     init_error();
     dummyIncrementalCache = {
       name: "dummy",
@@ -746,14 +746,14 @@ var init_dummy3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/assetResolver/dummy.js
+// node_modules/@opennextjs/aws/dist/overrides/assetResolver/dummy.js
 var dummy_exports4 = {};
 __export(dummy_exports4, {
   default: () => dummy_default4
 });
 var resolver, dummy_default4;
 var init_dummy4 = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/assetResolver/dummy.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/assetResolver/dummy.js"() {
     resolver = {
       name: "dummy"
     };
@@ -761,14 +761,14 @@ var init_dummy4 = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/proxyExternalRequest/fetch.js
+// node_modules/@opennextjs/aws/dist/overrides/proxyExternalRequest/fetch.js
 var fetch_exports = {};
 __export(fetch_exports, {
   default: () => fetch_default
 });
 var fetchProxy, fetch_default;
 var init_fetch = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/proxyExternalRequest/fetch.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/proxyExternalRequest/fetch.js"() {
     init_stream();
     fetchProxy = {
       name: "fetch-proxy",
@@ -798,14 +798,14 @@ var init_fetch = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/cdnInvalidation/dummy.js
+// node_modules/@opennextjs/aws/dist/overrides/cdnInvalidation/dummy.js
 var dummy_exports5 = {};
 __export(dummy_exports5, {
   default: () => dummy_default5
 });
 var dummy_default5;
 var init_dummy5 = __esm({
-  "node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/overrides/cdnInvalidation/dummy.js"() {
+  "node_modules/@opennextjs/aws/dist/overrides/cdnInvalidation/dummy.js"() {
     dummy_default5 = {
       name: "dummy",
       invalidatePaths: (_) => {
@@ -815,10 +815,10 @@ var init_dummy5 = __esm({
   }
 });
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/createMainHandler.js
+// node_modules/@opennextjs/aws/dist/core/createMainHandler.js
 init_logger();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/adapters/util.js
+// node_modules/@opennextjs/aws/dist/adapters/util.js
 function setNodeEnv() {
   const processEnv = process.env;
   processEnv.NODE_ENV = process.env.NODE_ENV ?? "production";
@@ -827,10 +827,10 @@ function generateUniqueId() {
   return Math.random().toString(36).slice(2, 8);
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/requestHandler.js
+// node_modules/@opennextjs/aws/dist/core/requestHandler.js
 import { AsyncLocalStorage } from "node:async_hooks";
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/http/openNextResponse.js
+// node_modules/@opennextjs/aws/dist/http/openNextResponse.js
 init_logger();
 init_util();
 import { Transform } from "node:stream";
@@ -1115,7 +1115,7 @@ var OpenNextNodeResponse = class extends Transform {
   }
 };
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/http/request.js
+// node_modules/@opennextjs/aws/dist/http/request.js
 import http from "node:http";
 var IncomingMessage = class extends http.IncomingMessage {
   constructor({ method, url, headers, body, remoteAddress }) {
@@ -1148,7 +1148,7 @@ var IncomingMessage = class extends http.IncomingMessage {
   }
 };
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/utils/promise.js
+// node_modules/@opennextjs/aws/dist/utils/promise.js
 init_logger();
 var DetachedPromise = class {
   resolve;
@@ -1229,7 +1229,7 @@ function runWithOpenNextRequestContext({ isISRRevalidation, waitUntil, requestId
   });
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/adapters/config/index.js
+// node_modules/@opennextjs/aws/dist/adapters/config/index.js
 init_logger();
 import path from "node:path";
 globalThis.__dirname ??= "";
@@ -1237,31 +1237,31 @@ var NEXT_DIR = path.join(__dirname, ".next");
 var OPEN_NEXT_DIR = path.join(__dirname, ".open-next");
 debug({ NEXT_DIR, OPEN_NEXT_DIR });
 var NextConfig = { "env": {}, "webpack": null, "typescript": { "ignoreBuildErrors": false }, "typedRoutes": false, "distDir": ".next", "cleanDistDir": true, "assetPrefix": "", "cacheMaxMemorySize": 52428800, "configOrigin": "next.config.ts", "useFileSystemPublicRoutes": true, "generateEtags": true, "pageExtensions": ["tsx", "ts", "jsx", "js"], "poweredByHeader": true, "compress": true, "images": { "deviceSizes": [640, 750, 828, 1080, 1200, 1920, 2048, 3840], "imageSizes": [32, 48, 64, 96, 128, 256, 384], "path": "/_next/image", "loader": "default", "loaderFile": "", "domains": [], "disableStaticImages": false, "minimumCacheTTL": 14400, "formats": ["image/webp"], "maximumRedirects": 3, "maximumResponseBody": 5e7, "dangerouslyAllowLocalIP": false, "dangerouslyAllowSVG": false, "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;", "contentDispositionType": "attachment", "localPatterns": [{ "pathname": "**", "search": "" }], "remotePatterns": [], "qualities": [75], "unoptimized": false }, "devIndicators": { "position": "bottom-left" }, "onDemandEntries": { "maxInactiveAge": 6e4, "pagesBufferLength": 5 }, "basePath": "", "sassOptions": {}, "trailingSlash": false, "i18n": null, "productionBrowserSourceMaps": false, "excludeDefaultMomentLocales": true, "reactProductionProfiling": false, "reactStrictMode": null, "reactMaxHeadersLength": 6e3, "httpAgentOptions": { "keepAlive": true }, "logging": {}, "compiler": {}, "expireTime": 31536e3, "staticPageGenerationTimeout": 60, "output": "standalone", "modularizeImports": { "@mui/icons-material": { "transform": "@mui/icons-material/{{member}}" }, "lodash": { "transform": "lodash/{{member}}" } }, "outputFileTracingRoot": "/home/dgann/Development/wildwood-booking", "cacheComponents": false, "cacheLife": { "default": { "stale": 300, "revalidate": 900, "expire": 4294967294 }, "seconds": { "stale": 30, "revalidate": 1, "expire": 60 }, "minutes": { "stale": 300, "revalidate": 60, "expire": 3600 }, "hours": { "stale": 300, "revalidate": 3600, "expire": 86400 }, "days": { "stale": 300, "revalidate": 86400, "expire": 604800 }, "weeks": { "stale": 300, "revalidate": 604800, "expire": 2592e3 }, "max": { "stale": 300, "revalidate": 2592e3, "expire": 31536e3 } }, "cacheHandlers": {}, "experimental": { "useSkewCookie": false, "cssChunking": true, "multiZoneDraftMode": false, "appNavFailHandling": false, "prerenderEarlyExit": true, "serverMinification": true, "linkNoTouchStart": false, "caseSensitiveRoutes": false, "dynamicOnHover": false, "preloadEntriesOnStart": true, "clientRouterFilter": true, "clientRouterFilterRedirects": false, "fetchCacheKeyPrefix": "", "proxyPrefetch": "flexible", "optimisticClientCache": true, "manualClientBasePath": false, "cpus": 7, "memoryBasedWorkersCount": false, "imgOptConcurrency": null, "imgOptTimeoutInSeconds": 7, "imgOptMaxInputPixels": 268402689, "imgOptSequentialRead": null, "imgOptSkipMetadata": null, "isrFlushToDisk": true, "workerThreads": false, "optimizeCss": false, "nextScriptWorkers": false, "scrollRestoration": false, "externalDir": false, "disableOptimizedLoading": false, "gzipSize": true, "craCompat": false, "esmExternals": true, "fullySpecified": false, "swcTraceProfiling": false, "forceSwcTransforms": false, "largePageDataBytes": 128e3, "typedEnv": false, "parallelServerCompiles": false, "parallelServerBuildTraces": false, "ppr": false, "authInterrupts": false, "webpackMemoryOptimizations": false, "optimizeServerReact": true, "viewTransition": false, "removeUncaughtErrorAndRejectionListeners": false, "validateRSCRequestHeaders": false, "staleTimes": { "dynamic": 0, "static": 300 }, "reactDebugChannel": false, "serverComponentsHmrCache": true, "staticGenerationMaxConcurrency": 8, "staticGenerationMinPagesPerWorker": 25, "transitionIndicator": false, "inlineCss": false, "useCache": false, "globalNotFound": false, "browserDebugInfoInTerminal": false, "lockDistDir": true, "isolatedDevBuild": true, "proxyClientMaxBodySize": 10485760, "hideLogsAfterAbort": false, "mcpServer": true, "turbopackFileSystemCacheForDev": true, "turbopackFileSystemCacheForBuild": false, "turbopackInferModuleSideEffects": false, "optimizePackageImports": ["lucide-react", "date-fns", "lodash-es", "ramda", "antd", "react-bootstrap", "ahooks", "@ant-design/icons", "@headlessui/react", "@headlessui-float/react", "@heroicons/react/20/solid", "@heroicons/react/24/solid", "@heroicons/react/24/outline", "@visx/visx", "@tremor/react", "rxjs", "@mui/material", "@mui/icons-material", "recharts", "react-use", "effect", "@effect/schema", "@effect/platform", "@effect/platform-node", "@effect/platform-browser", "@effect/platform-bun", "@effect/sql", "@effect/sql-mssql", "@effect/sql-mysql2", "@effect/sql-pg", "@effect/sql-sqlite-node", "@effect/sql-sqlite-bun", "@effect/sql-sqlite-wasm", "@effect/sql-sqlite-react-native", "@effect/rpc", "@effect/rpc-http", "@effect/typeclass", "@effect/experimental", "@effect/opentelemetry", "@material-ui/core", "@material-ui/icons", "@tabler/icons-react", "mui-core", "react-icons/ai", "react-icons/bi", "react-icons/bs", "react-icons/cg", "react-icons/ci", "react-icons/di", "react-icons/fa", "react-icons/fa6", "react-icons/fc", "react-icons/fi", "react-icons/gi", "react-icons/go", "react-icons/gr", "react-icons/hi", "react-icons/hi2", "react-icons/im", "react-icons/io", "react-icons/io5", "react-icons/lia", "react-icons/lib", "react-icons/lu", "react-icons/md", "react-icons/pi", "react-icons/ri", "react-icons/rx", "react-icons/si", "react-icons/sl", "react-icons/tb", "react-icons/tfi", "react-icons/ti", "react-icons/vsc", "react-icons/wi"], "trustHostHeader": false, "isExperimentalCompile": false }, "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight", "bundlePagesRouterDependencies": false, "configFileName": "next.config.ts", "turbopack": { "root": "/home/dgann/Development/wildwood-booking" }, "distDirRoot": ".next" };
-var BuildId = "PlOXch4qWG3SXaib21Ivy";
+var BuildId = "cdZox4oJJTQxr8pggwV8m";
 var HtmlPages = ["/404", "/500"];
-var RoutesManifest = { "basePath": "", "rewrites": { "beforeFiles": [], "afterFiles": [], "fallback": [] }, "redirects": [{ "source": "/:path+/", "destination": "/:path+", "internal": true, "priority": true, "statusCode": 308, "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$" }], "routes": { "static": [{ "page": "/", "regex": "^/(?:/)?$", "routeKeys": {}, "namedRegex": "^/(?:/)?$" }, { "page": "/_global-error", "regex": "^/_global\\-error(?:/)?$", "routeKeys": {}, "namedRegex": "^/_global\\-error(?:/)?$" }, { "page": "/_not-found", "regex": "^/_not\\-found(?:/)?$", "routeKeys": {}, "namedRegex": "^/_not\\-found(?:/)?$" }, { "page": "/admin", "regex": "^/admin(?:/)?$", "routeKeys": {}, "namedRegex": "^/admin(?:/)?$" }, { "page": "/admin/dashboard", "regex": "^/admin/dashboard(?:/)?$", "routeKeys": {}, "namedRegex": "^/admin/dashboard(?:/)?$" }, { "page": "/api/admin/data", "regex": "^/api/admin/data(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/admin/data(?:/)?$" }, { "page": "/api/auth/login", "regex": "^/api/auth/login(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/auth/login(?:/)?$" }, { "page": "/api/auth/logout", "regex": "^/api/auth/logout(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/auth/logout(?:/)?$" }, { "page": "/api/auth/status", "regex": "^/api/auth/status(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/auth/status(?:/)?$" }, { "page": "/api/content", "regex": "^/api/content(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/content(?:/)?$" }, { "page": "/api/revalidate", "regex": "^/api/revalidate(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/revalidate(?:/)?$" }, { "page": "/api/services", "regex": "^/api/services(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/services(?:/)?$" }, { "page": "/book", "regex": "^/book(?:/)?$", "routeKeys": {}, "namedRegex": "^/book(?:/)?$" }], "dynamic": [{ "page": "/api/content/[key]", "regex": "^/api/content/([^/]+?)(?:/)?$", "routeKeys": { "nxtPkey": "nxtPkey" }, "namedRegex": "^/api/content/(?<nxtPkey>[^/]+?)(?:/)?$" }, { "page": "/api/services/[id]", "regex": "^/api/services/([^/]+?)(?:/)?$", "routeKeys": { "nxtPid": "nxtPid" }, "namedRegex": "^/api/services/(?<nxtPid>[^/]+?)(?:/)?$" }, { "page": "/services/[slug]", "regex": "^/services/([^/]+?)(?:/)?$", "routeKeys": { "nxtPslug": "nxtPslug" }, "namedRegex": "^/services/(?<nxtPslug>[^/]+?)(?:/)?$" }], "data": { "static": [], "dynamic": [] } }, "locales": [] };
-var PrerenderManifest = { "version": 4, "routes": { "/_global-error": { "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/_global-error", "dataRoute": "/_global-error.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] }, "/_not-found": { "initialStatus": 404, "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/_not-found", "dataRoute": "/_not-found.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] }, "/admin/dashboard": { "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/admin/dashboard", "dataRoute": "/admin/dashboard.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] }, "/admin": { "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/admin", "dataRoute": "/admin.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] } }, "dynamicRoutes": {}, "notFoundRoutes": [], "preview": { "previewModeId": "694f474ac920966c5b5ea8a4e0fb023a", "previewModeSigningKey": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1", "previewModeEncryptionKey": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81" } };
-var MiddlewareManifest = { "version": 3, "middleware": {}, "sortedMiddleware": [], "functions": { "/api/admin/data/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/admin/data/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_admin_data_route_actions_84ff2002.js", "server/edge/chunks/[root-of-the-server]__c18c4079._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_243ba228.js"], "name": "app/api/admin/data/route", "page": "/api/admin/data/route", "matchers": [{ "regexp": "^/api/admin/data(?:/)?$", "originalSource": "/api/admin/data" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/auth/login/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/auth/login/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_auth_login_route_actions_1d2c0e30.js", "server/edge/chunks/[root-of-the-server]__ea89e499._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_ec918d6f.js"], "name": "app/api/auth/login/route", "page": "/api/auth/login/route", "matchers": [{ "regexp": "^/api/auth/login(?:/)?$", "originalSource": "/api/auth/login" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/auth/logout/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/auth/logout/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_auth_logout_route_actions_165a006f.js", "server/edge/chunks/[root-of-the-server]__10dd33b9._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_ec09d37c.js"], "name": "app/api/auth/logout/route", "page": "/api/auth/logout/route", "matchers": [{ "regexp": "^/api/auth/logout(?:/)?$", "originalSource": "/api/auth/logout" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/auth/status/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/auth/status/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_auth_status_route_actions_194974ed.js", "server/edge/chunks/[root-of-the-server]__c2012cce._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_1c3cde85.js"], "name": "app/api/auth/status/route", "page": "/api/auth/status/route", "matchers": [{ "regexp": "^/api/auth/status(?:/)?$", "originalSource": "/api/auth/status" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/content/[key]/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/content/[key]/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_content_[key]_route_actions_0829ff78.js", "server/edge/chunks/[root-of-the-server]__cc22eb26._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_93ccb46c.js"], "name": "app/api/content/[key]/route", "page": "/api/content/[key]/route", "matchers": [{ "regexp": "^/api/content/(?P<nxtPkey>[^/]+?)(?:/)?$", "originalSource": "/api/content/[key]" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/content/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/content/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_content_route_actions_659c0812.js", "server/edge/chunks/[root-of-the-server]__a637516e._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_e04af1c9.js"], "name": "app/api/content/route", "page": "/api/content/route", "matchers": [{ "regexp": "^/api/content(?:/)?$", "originalSource": "/api/content" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/revalidate/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/revalidate/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_revalidate_route_actions_1914b615.js", "server/edge/chunks/[root-of-the-server]__3f98f63b._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_c3b3758a.js"], "name": "app/api/revalidate/route", "page": "/api/revalidate/route", "matchers": [{ "regexp": "^/api/revalidate(?:/)?$", "originalSource": "/api/revalidate" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/services/[id]/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/services/[id]/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_services_[id]_route_actions_410a1b30.js", "server/edge/chunks/[root-of-the-server]__14d8b86d._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_f7041359.js"], "name": "app/api/services/[id]/route", "page": "/api/services/[id]/route", "matchers": [{ "regexp": "^/api/services/(?P<nxtPid>[^/]+?)(?:/)?$", "originalSource": "/api/services/[id]" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/api/services/route": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/server-reference-manifest.js", "server/app/api/services/route_client-reference-manifest.js", "server/edge/chunks/_next-internal_server_app_api_services_route_actions_9d917a48.js", "server/edge/chunks/[root-of-the-server]__2e88f9fb._.js", "server/edge/chunks/b2b3e_next_dist_822a8641._.js", "server/edge/chunks/f035a_next_dist_esm_build_templates_edge-wrapper_92458cec.js"], "name": "app/api/services/route", "page": "/api/services/route", "matchers": [{ "regexp": "^/api/services(?:/)?$", "originalSource": "/api/services" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/book/page": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/next-font-manifest.js", "server/server-reference-manifest.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_bee1a1e0._.js", "server/edge/chunks/ssr/node_modules__pnpm_905100dc._.js", "server/edge/chunks/ssr/b2b3e_next_dist_322949bf._.js", "server/edge/chunks/ssr/node_modules__pnpm_059682c2._.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_2cb75d74._.js", "server/edge/chunks/ssr/_3d3e8c48._.js", "server/edge/chunks/ssr/_71c218b7._.js", "server/edge/chunks/ssr/b2b3e_next_dist_602270b9._.js", "server/edge/chunks/ssr/node_modules__pnpm_d33ca6db._.js", "server/edge/chunks/ssr/_7a241bf4._.js", "server/edge/chunks/ssr/components_BookingWizard_tsx_3cfc89a7._.js", "server/edge/chunks/ssr/node_modules__pnpm_9bad29eb._.js", "server/app/book/page_client-reference-manifest.js", "server/edge/chunks/ssr/_next-internal_server_app_book_page_actions_90245f4b.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_c7bea453._.js", "server/edge/chunks/ssr/node_modules__pnpm_bddcfedd._.js", "server/edge/chunks/ssr/_a041d743._.js", "server/edge/chunks/ssr/node_modules__pnpm_3391d761._.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_0371768e._.js", "server/edge/chunks/ssr/b2b3e_next_dist_054fcebc._.js", "server/edge/chunks/ssr/[root-of-the-server]__923d9963._.js", "server/edge/chunks/ssr/b2b3e_next_dist_92001231._.js", "server/edge/chunks/ssr/b2b3e_next_dist_d4efde27._.js", "server/edge/chunks/ssr/b2b3e_next_dist_compiled_3a558d88._.js", "server/edge/chunks/ssr/[root-of-the-server]__cb6ba5ad._.js", "server/edge/chunks/ssr/f035a_next_dist_esm_build_templates_edge-wrapper_55defa06.js", "server/app/book/page/react-loadable-manifest.js"], "name": "app/book/page", "page": "/book/page", "matchers": [{ "regexp": "^/book(?:/)?$", "originalSource": "/book" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/page": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/next-font-manifest.js", "server/server-reference-manifest.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_bee1a1e0._.js", "server/edge/chunks/ssr/node_modules__pnpm_905100dc._.js", "server/edge/chunks/ssr/b2b3e_next_dist_322949bf._.js", "server/edge/chunks/ssr/node_modules__pnpm_059682c2._.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_2cb75d74._.js", "server/edge/chunks/ssr/_3d3e8c48._.js", "server/edge/chunks/ssr/_71c218b7._.js", "server/edge/chunks/ssr/b2b3e_next_dist_602270b9._.js", "server/edge/chunks/ssr/_33b16620._.js", "server/edge/chunks/ssr/components_HomeClient_tsx_440e5134._.js", "server/edge/chunks/ssr/_7a241bf4._.js", "server/app/page_client-reference-manifest.js", "server/edge/chunks/ssr/_next-internal_server_app_page_actions_6b5f5a5c.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_c7bea453._.js", "server/edge/chunks/ssr/node_modules__pnpm_bddcfedd._.js", "server/edge/chunks/ssr/node_modules__pnpm_3391d761._.js", "server/edge/chunks/ssr/_2c7782b8._.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_0371768e._.js", "server/edge/chunks/ssr/b2b3e_next_dist_compiled_3a558d88._.js", "server/edge/chunks/ssr/b2b3e_next_dist_d4efde27._.js", "server/edge/chunks/ssr/b2b3e_next_dist_92001231._.js", "server/edge/chunks/ssr/[root-of-the-server]__923d9963._.js", "server/edge/chunks/ssr/b2b3e_next_dist_054fcebc._.js", "server/edge/chunks/ssr/[root-of-the-server]__2aa96ab9._.js", "server/edge/chunks/ssr/f035a_next_dist_esm_build_templates_edge-wrapper_a2b86149.js", "server/app/page/react-loadable-manifest.js"], "name": "app/page", "page": "/page", "matchers": [{ "regexp": "^/(?:/)?$", "originalSource": "/" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } }, "/services/[slug]/page": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/next-font-manifest.js", "server/server-reference-manifest.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_bee1a1e0._.js", "server/edge/chunks/ssr/node_modules__pnpm_905100dc._.js", "server/edge/chunks/ssr/b2b3e_next_dist_322949bf._.js", "server/edge/chunks/ssr/node_modules__pnpm_059682c2._.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_2cb75d74._.js", "server/edge/chunks/ssr/_3d3e8c48._.js", "server/edge/chunks/ssr/_71c218b7._.js", "server/edge/chunks/ssr/b2b3e_next_dist_602270b9._.js", "server/edge/chunks/ssr/_2db9dc19._.js", "server/edge/chunks/ssr/_7a241bf4._.js", "server/app/services/[slug]/page_client-reference-manifest.js", "server/edge/chunks/ssr/_next-internal_server_app_services_[slug]_page_actions_3a1e1930.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_c7bea453._.js", "server/edge/chunks/ssr/node_modules__pnpm_bddcfedd._.js", "server/edge/chunks/ssr/_c2896c9c._.js", "server/edge/chunks/ssr/node_modules__pnpm_3391d761._.js", "server/edge/chunks/ssr/b2b3e_next_dist_esm_0371768e._.js", "server/edge/chunks/ssr/[root-of-the-server]__923d9963._.js", "server/edge/chunks/ssr/b2b3e_next_dist_054fcebc._.js", "server/edge/chunks/ssr/b2b3e_next_dist_d4efde27._.js", "server/edge/chunks/ssr/b2b3e_next_dist_compiled_3a558d88._.js", "server/edge/chunks/ssr/b2b3e_next_dist_92001231._.js", "server/edge/chunks/ssr/[root-of-the-server]__272a7c5d._.js", "server/edge/chunks/ssr/f035a_next_dist_esm_build_templates_edge-wrapper_e3f96732.js", "server/app/services/[slug]/page/react-loadable-manifest.js"], "name": "app/services/[slug]/page", "page": "/services/[slug]/page", "matchers": [{ "regexp": "^/services/(?P<nxtPslug>[^/]+?)(?:/)?$", "originalSource": "/services/[slug]" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "PlOXch4qWG3SXaib21Ivy", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "9TBZgKYvEzPogIONg9Pwdvhbhyxr5Ka58gGh5NtykCg=", "__NEXT_PREVIEW_MODE_ID": "694f474ac920966c5b5ea8a4e0fb023a", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6b093dec1db3934da7eb7676b5322d84a3766a58a004764923966f905028af81", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "42e967f06bb6a01f4d1c0d5fa920e170d4148da74f1f33740afc64d7e95dfbf1" } } } };
-var AppPathRoutesManifest = { "/_global-error/page": "/_global-error", "/_not-found/page": "/_not-found", "/admin/dashboard/page": "/admin/dashboard", "/admin/page": "/admin", "/api/admin/data/route": "/api/admin/data", "/api/auth/login/route": "/api/auth/login", "/api/auth/logout/route": "/api/auth/logout", "/api/auth/status/route": "/api/auth/status", "/api/content/[key]/route": "/api/content/[key]", "/api/content/route": "/api/content", "/api/revalidate/route": "/api/revalidate", "/api/services/[id]/route": "/api/services/[id]", "/api/services/route": "/api/services", "/book/page": "/book", "/page": "/", "/services/[slug]/page": "/services/[slug]" };
-var FunctionsConfigManifest = { "version": 1, "functions": { "/": {}, "/api/admin/data": {}, "/api/auth/login": {}, "/api/auth/logout": {}, "/api/auth/status": {}, "/api/content": {}, "/api/content/[key]": {}, "/api/revalidate": {}, "/api/services": {}, "/api/services/[id]": {}, "/book": {}, "/services/[slug]": {} } };
+var RoutesManifest = { "basePath": "", "rewrites": { "beforeFiles": [], "afterFiles": [], "fallback": [] }, "redirects": [{ "source": "/:path+/", "destination": "/:path+", "internal": true, "priority": true, "statusCode": 308, "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$" }], "routes": { "static": [{ "page": "/", "regex": "^/(?:/)?$", "routeKeys": {}, "namedRegex": "^/(?:/)?$" }, { "page": "/_global-error", "regex": "^/_global\\-error(?:/)?$", "routeKeys": {}, "namedRegex": "^/_global\\-error(?:/)?$" }, { "page": "/_not-found", "regex": "^/_not\\-found(?:/)?$", "routeKeys": {}, "namedRegex": "^/_not\\-found(?:/)?$" }, { "page": "/admin", "regex": "^/admin(?:/)?$", "routeKeys": {}, "namedRegex": "^/admin(?:/)?$" }, { "page": "/admin/dashboard", "regex": "^/admin/dashboard(?:/)?$", "routeKeys": {}, "namedRegex": "^/admin/dashboard(?:/)?$" }, { "page": "/api/admin/data", "regex": "^/api/admin/data(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/admin/data(?:/)?$" }, { "page": "/api/auth/login", "regex": "^/api/auth/login(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/auth/login(?:/)?$" }, { "page": "/api/auth/logout", "regex": "^/api/auth/logout(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/auth/logout(?:/)?$" }, { "page": "/api/auth/status", "regex": "^/api/auth/status(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/auth/status(?:/)?$" }, { "page": "/api/content", "regex": "^/api/content(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/content(?:/)?$" }, { "page": "/api/debug-db", "regex": "^/api/debug\\-db(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/debug\\-db(?:/)?$" }, { "page": "/api/revalidate", "regex": "^/api/revalidate(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/revalidate(?:/)?$" }, { "page": "/api/services", "regex": "^/api/services(?:/)?$", "routeKeys": {}, "namedRegex": "^/api/services(?:/)?$" }, { "page": "/book", "regex": "^/book(?:/)?$", "routeKeys": {}, "namedRegex": "^/book(?:/)?$" }], "dynamic": [{ "page": "/api/content/[key]", "regex": "^/api/content/([^/]+?)(?:/)?$", "routeKeys": { "nxtPkey": "nxtPkey" }, "namedRegex": "^/api/content/(?<nxtPkey>[^/]+?)(?:/)?$" }, { "page": "/api/services/[id]", "regex": "^/api/services/([^/]+?)(?:/)?$", "routeKeys": { "nxtPid": "nxtPid" }, "namedRegex": "^/api/services/(?<nxtPid>[^/]+?)(?:/)?$" }, { "page": "/services/[slug]", "regex": "^/services/([^/]+?)(?:/)?$", "routeKeys": { "nxtPslug": "nxtPslug" }, "namedRegex": "^/services/(?<nxtPslug>[^/]+?)(?:/)?$" }], "data": { "static": [], "dynamic": [] } }, "locales": [] };
+var PrerenderManifest = { "version": 4, "routes": { "/_global-error": { "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/_global-error", "dataRoute": "/_global-error.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] }, "/_not-found": { "initialStatus": 404, "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/_not-found", "dataRoute": "/_not-found.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] }, "/admin/dashboard": { "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/admin/dashboard", "dataRoute": "/admin/dashboard.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] }, "/admin": { "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/admin", "dataRoute": "/admin.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] }, "/": { "experimentalBypassFor": [{ "type": "header", "key": "next-action" }, { "type": "header", "key": "content-type", "value": "multipart/form-data;.*" }], "initialRevalidateSeconds": false, "srcRoute": "/", "dataRoute": "/index.rsc", "allowHeader": ["host", "x-matched-path", "x-prerender-revalidate", "x-prerender-revalidate-if-generated", "x-next-revalidated-tags", "x-next-revalidate-tag-token"] } }, "dynamicRoutes": {}, "notFoundRoutes": [], "preview": { "previewModeId": "bc3855da7d050b82ccf867392f599793", "previewModeSigningKey": "e2eb8951e9164b4b0055c0bb12f1e88dc07e2a64c0d2ed785262c39a0288ee6b", "previewModeEncryptionKey": "966949b4b9b3ea0f22b9dbf7cf32679f177d7d21c09fbce4701c08af946b10aa" } };
+var MiddlewareManifest = { "version": 3, "middleware": {}, "sortedMiddleware": [], "functions": { "/book/page": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/next-font-manifest.js", "server/server-reference-manifest.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_aeeb2a8e._.js", "server/edge/chunks/ssr/node_modules_next_dist_19237b11._.js", "server/edge/chunks/ssr/node_modules_83454455._.js", "server/edge/chunks/ssr/node_modules_281e655a._.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_1de25341._.js", "server/edge/chunks/ssr/_893fc96e._.js", "server/edge/chunks/ssr/_e5975ef5._.js", "server/edge/chunks/ssr/node_modules_16127542._.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_server_app-render_34575bf2._.js", "server/edge/chunks/ssr/_d7054c54._.js", "server/edge/chunks/ssr/components_BookingWizard_tsx_3cfc89a7._.js", "server/edge/chunks/ssr/node_modules_5a701ded._.js", "server/app/book/page_client-reference-manifest.js", "server/edge/chunks/ssr/_next-internal_server_app_book_page_actions_90245f4b.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_66ff6d9f._.js", "server/edge/chunks/ssr/node_modules_next_dist_fa01e68e._.js", "server/edge/chunks/ssr/_8fe4f539._.js", "server/edge/chunks/ssr/node_modules_486ea0df._.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_eca3b20c._.js", "server/edge/chunks/ssr/[root-of-the-server]__a50d2b31._.js", "server/edge/chunks/ssr/node_modules_1128ba04._.js", "server/edge/chunks/ssr/node_modules_next_dist_b4d008d4._.js", "server/edge/chunks/ssr/node_modules_next_dist_compiled_2adaed9e._.js", "server/edge/chunks/ssr/[root-of-the-server]__9a35eb0b._.js", "server/edge/chunks/ssr/_d53bd506._.js", "server/edge/chunks/ssr/turbopack-node_modules_next_dist_esm_build_templates_edge-wrapper_108e85b8.js", "server/app/book/page/react-loadable-manifest.js"], "name": "app/book/page", "page": "/book/page", "matchers": [{ "regexp": "^/book(?:/)?$", "originalSource": "/book" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "cdZox4oJJTQxr8pggwV8m", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "i/Atc4CPcZtm3I0TzSbdAuXfujASu2x8UcCNzd08lPs=", "__NEXT_PREVIEW_MODE_ID": "bc3855da7d050b82ccf867392f599793", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "966949b4b9b3ea0f22b9dbf7cf32679f177d7d21c09fbce4701c08af946b10aa", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "e2eb8951e9164b4b0055c0bb12f1e88dc07e2a64c0d2ed785262c39a0288ee6b" } }, "/services/[slug]/page": { "files": ["server/middleware-build-manifest.js", "server/interception-route-rewrite-manifest.js", "required-server-files.js", "server/next-font-manifest.js", "server/server-reference-manifest.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_aeeb2a8e._.js", "server/edge/chunks/ssr/node_modules_next_dist_19237b11._.js", "server/edge/chunks/ssr/node_modules_83454455._.js", "server/edge/chunks/ssr/node_modules_281e655a._.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_1de25341._.js", "server/edge/chunks/ssr/_893fc96e._.js", "server/edge/chunks/ssr/_e5975ef5._.js", "server/edge/chunks/ssr/node_modules_16127542._.js", "server/edge/chunks/ssr/components_ServiceDetail_tsx_4da82d62._.js", "server/edge/chunks/ssr/_d7054c54._.js", "server/app/services/[slug]/page_client-reference-manifest.js", "server/edge/chunks/ssr/_next-internal_server_app_services_[slug]_page_actions_3a1e1930.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_66ff6d9f._.js", "server/edge/chunks/ssr/node_modules_next_dist_fa01e68e._.js", "server/edge/chunks/ssr/[root-of-the-server]__9a35eb0b._.js", "server/edge/chunks/ssr/node_modules_486ea0df._.js", "server/edge/chunks/ssr/node_modules_next_dist_esm_eca3b20c._.js", "server/edge/chunks/ssr/node_modules_next_dist_b4d008d4._.js", "server/edge/chunks/ssr/node_modules_1128ba04._.js", "server/edge/chunks/ssr/[root-of-the-server]__a50d2b31._.js", "server/edge/chunks/ssr/node_modules_next_dist_compiled_2adaed9e._.js", "server/edge/chunks/ssr/_642b2b55._.js", "server/edge/chunks/ssr/_ee20d5e3._.js", "server/edge/chunks/ssr/turbopack-node_modules_next_dist_esm_build_templates_edge-wrapper_529a005e.js", "server/app/services/[slug]/page/react-loadable-manifest.js"], "name": "app/services/[slug]/page", "page": "/services/[slug]/page", "matchers": [{ "regexp": "^/services/(?P<nxtPslug>[^/]+?)(?:/)?$", "originalSource": "/services/[slug]" }], "wasm": [], "assets": [], "env": { "__NEXT_BUILD_ID": "cdZox4oJJTQxr8pggwV8m", "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "i/Atc4CPcZtm3I0TzSbdAuXfujASu2x8UcCNzd08lPs=", "__NEXT_PREVIEW_MODE_ID": "bc3855da7d050b82ccf867392f599793", "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "966949b4b9b3ea0f22b9dbf7cf32679f177d7d21c09fbce4701c08af946b10aa", "__NEXT_PREVIEW_MODE_SIGNING_KEY": "e2eb8951e9164b4b0055c0bb12f1e88dc07e2a64c0d2ed785262c39a0288ee6b" } } } };
+var AppPathRoutesManifest = { "/_global-error/page": "/_global-error", "/_not-found/page": "/_not-found", "/admin/dashboard/page": "/admin/dashboard", "/admin/page": "/admin", "/api/admin/data/route": "/api/admin/data", "/api/auth/login/route": "/api/auth/login", "/api/auth/logout/route": "/api/auth/logout", "/api/auth/status/route": "/api/auth/status", "/api/content/[key]/route": "/api/content/[key]", "/api/content/route": "/api/content", "/api/debug-db/route": "/api/debug-db", "/api/revalidate/route": "/api/revalidate", "/api/services/[id]/route": "/api/services/[id]", "/api/services/route": "/api/services", "/book/page": "/book", "/page": "/", "/services/[slug]/page": "/services/[slug]" };
+var FunctionsConfigManifest = { "version": 1, "functions": { "/book": {}, "/services/[slug]": {} } };
 var PagesManifest = { "/404": "pages/404.html", "/500": "pages/500.html" };
 process.env.NEXT_BUILD_ID = BuildId;
 process.env.NEXT_PREVIEW_MODE_ID = PrerenderManifest?.preview?.previewModeId;
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/requestHandler.js
+// node_modules/@opennextjs/aws/dist/core/requestHandler.js
 init_logger();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/patchAsyncStorage.js
+// node_modules/@opennextjs/aws/dist/core/patchAsyncStorage.js
 var mod = (init_node_module(), __toCommonJS(node_module_exports));
 var resolveFilename = mod._resolveFilename;
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/util.js
+// node_modules/@opennextjs/aws/dist/core/routing/util.js
 import crypto from "node:crypto";
 init_util();
 init_logger();
 import { ReadableStream as ReadableStream3 } from "node:stream/web";
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/utils/binary.js
+// node_modules/@opennextjs/aws/dist/utils/binary.js
 var commonBinaryMimeTypes = /* @__PURE__ */ new Set([
   "application/octet-stream",
   // Docs
@@ -1329,11 +1329,11 @@ function isBinaryContentType(contentType) {
   return commonBinaryMimeTypes.has(value);
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/i18n/index.js
+// node_modules/@opennextjs/aws/dist/core/routing/i18n/index.js
 init_stream();
 init_logger();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/i18n/accept-header.js
+// node_modules/@opennextjs/aws/dist/core/routing/i18n/accept-header.js
 function parse(raw, preferences, options) {
   const lowers = /* @__PURE__ */ new Map();
   const header = raw.replace(/[ \t]/g, "");
@@ -1433,7 +1433,7 @@ function acceptLanguage(header = "", preferences) {
   })[0] || void 0;
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/i18n/index.js
+// node_modules/@opennextjs/aws/dist/core/routing/i18n/index.js
 function isLocalizedPath(path2) {
   return NextConfig.i18n?.locales.includes(path2.split("/")[1].toLowerCase()) ?? false;
 }
@@ -1485,7 +1485,7 @@ function localizePath(internalEvent) {
   return `/${detectedLocale}${internalEvent.rawPath}`;
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/queue.js
+// node_modules/@opennextjs/aws/dist/core/routing/queue.js
 function generateShardId(rawPath, maxConcurrency, prefix) {
   let a = cyrb128(rawPath);
   let t = a += 1831565813;
@@ -1519,7 +1519,7 @@ function cyrb128(str) {
   return h1 >>> 0;
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/util.js
+// node_modules/@opennextjs/aws/dist/core/routing/util.js
 function constructNextUrl(baseUrl, path2) {
   const nextBasePath = NextConfig.basePath ?? "";
   const url = new URL(`${nextBasePath}${path2}`, baseUrl);
@@ -1686,25 +1686,25 @@ async function invalidateCDNOnRequest(params, headers) {
   }
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routingHandler.js
+// node_modules/@opennextjs/aws/dist/core/routingHandler.js
 init_logger();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/cacheInterceptor.js
+// node_modules/@opennextjs/aws/dist/core/routing/cacheInterceptor.js
 init_stream();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/utils/cache.js
+// node_modules/@opennextjs/aws/dist/utils/cache.js
 init_logger();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/cacheInterceptor.js
+// node_modules/@opennextjs/aws/dist/core/routing/cacheInterceptor.js
 init_logger();
 var CACHE_ONE_YEAR = 60 * 60 * 24 * 365;
 var CACHE_ONE_MONTH = 60 * 60 * 24 * 30;
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/matcher.js
+// node_modules/@opennextjs/aws/dist/core/routing/matcher.js
 init_stream();
 init_logger();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/routeMatcher.js
+// node_modules/@opennextjs/aws/dist/core/routing/routeMatcher.js
 var optionalLocalePrefixRegex = `^/(?:${RoutesManifest.locales.map((locale) => `${locale}/?`).join("|")})?`;
 var optionalBasepathPrefixRegex = RoutesManifest.basePath ? `^${RoutesManifest.basePath}/?` : "^/";
 var optionalPrefix = optionalLocalePrefixRegex.replace("^/", optionalBasepathPrefixRegex);
@@ -1754,14 +1754,14 @@ function getStaticAPIRoutes() {
   return [...pagesStaticAPIRoutes, ...appPathsStaticAPIRoutes];
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routing/middleware.js
+// node_modules/@opennextjs/aws/dist/core/routing/middleware.js
 init_stream();
 init_utils();
 var middlewareManifest = MiddlewareManifest;
 var functionsConfigManifest = FunctionsConfigManifest;
 var middleMatch = getMiddlewareMatch(middlewareManifest, functionsConfigManifest);
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/routingHandler.js
+// node_modules/@opennextjs/aws/dist/core/routingHandler.js
 var MIDDLEWARE_HEADER_PREFIX = "x-middleware-response-";
 var MIDDLEWARE_HEADER_PREFIX_LEN = MIDDLEWARE_HEADER_PREFIX.length;
 var INTERNAL_HEADER_PREFIX = "x-opennext-";
@@ -1771,16 +1771,16 @@ var INTERNAL_HEADER_RESOLVED_ROUTES = `${INTERNAL_HEADER_PREFIX}resolved-routes`
 var INTERNAL_HEADER_REWRITE_STATUS_CODE = `${INTERNAL_HEADER_PREFIX}rewrite-status-code`;
 var INTERNAL_EVENT_REQUEST_ID = `${INTERNAL_HEADER_PREFIX}request-id`;
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/util.js
+// node_modules/@opennextjs/aws/dist/core/util.js
 init_logger();
 import NextServer from "next/dist/server/next-server.js";
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/require-hooks.js
+// node_modules/@opennextjs/aws/dist/core/require-hooks.js
 init_logger();
 var mod2 = (init_node_module(), __toCommonJS(node_module_exports));
 var resolveFilename2 = mod2._resolveFilename;
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/util.js
+// node_modules/@opennextjs/aws/dist/core/util.js
 var cacheHandlerPath = __require.resolve("./cache.cjs");
 var composableCacheHandlerPath = __require.resolve("./composable-cache.cjs");
 var nextServer = new NextServer.default({
@@ -1850,7 +1850,7 @@ globalThis.__next_route_preloader = async (stage) => {
 };
 var requestHandler = (metadata) => "getRequestHandlerWithMetadata" in nextServer ? nextServer.getRequestHandlerWithMetadata(metadata) : nextServer.getRequestHandler();
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/requestHandler.js
+// node_modules/@opennextjs/aws/dist/core/requestHandler.js
 globalThis.__openNextAls = new AsyncLocalStorage();
 async function openNextHandler(internalEvent, options) {
   const initialHeaders = internalEvent.headers;
@@ -2062,7 +2062,7 @@ async function tryRenderError(type, res, internalEvent) {
   }
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/resolve.js
+// node_modules/@opennextjs/aws/dist/core/resolve.js
 async function resolveConverter(converter2) {
   if (typeof converter2 === "function") {
     return converter2();
@@ -2120,7 +2120,7 @@ async function resolveCdnInvalidation(cdnInvalidation) {
   return m_1.default;
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/core/createMainHandler.js
+// node_modules/@opennextjs/aws/dist/core/createMainHandler.js
 async function createMainHandler() {
   const config = await import("./open-next.config.mjs").then((m) => m.default);
   const thisFunction = globalThis.fnName ? config.functions[globalThis.fnName] : config.default;
@@ -2141,7 +2141,7 @@ async function createMainHandler() {
   return wrapper(openNextHandler, converter2);
 }
 
-// node_modules/.pnpm/@opennextjs+aws@3.9.16_next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3_/node_modules/@opennextjs/aws/dist/adapters/server-adapter.js
+// node_modules/@opennextjs/aws/dist/adapters/server-adapter.js
 setNodeEnv();
 setNextjsServerWorkingDirectory();
 globalThis.internalFetch = fetch;

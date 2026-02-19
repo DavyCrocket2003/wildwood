@@ -14,8 +14,10 @@
     "migrate:prod": "npx tsx scripts/run-migration.ts --remote"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "better-sqlite3": "^12.6.2",
     "date-fns": "^4.1.0",
+    "isomorphic-dompurify": "^2.36.0",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "react": "19.2.3",
