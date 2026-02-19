@@ -1,26 +1,29 @@
-pages_build_output_dir = ".open-next"
 name = "wildwood-booking"
-
+main = ".open-next/worker.js"
 compatibility_date = "2026-02-15"
 compatibility_flags = [
   "nodejs_compat",
   "global_fetch_strictly_public"
 ]
 
+# Required for OpenNext revalidation / on-demand ISR
 [[services]]
 binding = "WORKER_SELF_REFERENCE"
 service = "wildwood-booking"
 
+# Your D1 database
 [[d1_databases]]
 binding = "DB"
 database_name = "wildwood-db"
 database_id = "36a4ab82-29f5-4592-b5f7-58907276cc7f"
 
+# Incremental cache R2 bucket (this was causing the 403)
 [[r2_buckets]]
 binding = "NEXT_INC_CACHE_R2_BUCKET"
 bucket_name = "next-incremental-cache-local"
 preview_bucket_name = "next-incremental-cache-local-preview"
 
+# Images R2 bucket
 [[r2_buckets]]
 binding = "IMAGES"
 bucket_name = "wildwood-images"
