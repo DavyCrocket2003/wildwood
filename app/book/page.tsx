@@ -11,7 +11,7 @@ export default async function BookPage() {
 
   return (
     <>
-      {/* <Navbar phone={data.content.contactPhone} siteTitle={data.content.siteTitle} /> */}
+      <Navbar phone={data.content.contactPhone} siteTitle={data.content.siteTitle} />
       <div className="px-4 py-8 sm:px-6">
         <Link
           href="/"
