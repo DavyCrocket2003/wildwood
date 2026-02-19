@@ -75,11 +75,11 @@ export default function HomeClient() {
       }
 
       const [siteTitleData, heroTitleData, heroSubtitleData, contactPhoneData, contactEmailData] = await Promise.all([
-        siteTitleResponse.json(),
-        heroTitleResponse.json(),
-        heroSubtitleResponse.json(),
-        contactPhoneResponse.json(),
-        contactEmailResponse.json()
+        siteTitleResponse.json() as Promise<{ value: string }>,
+        heroTitleResponse.json() as Promise<{ value: string }>,
+        heroSubtitleResponse.json() as Promise<{ value: string }>,
+        contactPhoneResponse.json() as Promise<{ value: string }>,
+        contactEmailResponse.json() as Promise<{ value: string }>
       ]);
 
       setData({
