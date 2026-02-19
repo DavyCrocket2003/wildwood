@@ -55,21 +55,40 @@ export default function HomeClient() {
       const servicesData = await servicesResponse.json() as { services: DatabaseService[] };
       const services = servicesData.services || [];
 
-      // Content — this is the most likely culprit (your routes show /api/content/[key], not plain /api/content)
-      const contentResponse = await fetch("/api/content");
-      console.log("📡 /api/content status:", contentResponse.status);
-      if (!contentResponse.ok) {
-        throw new Error(`Content failed: ${contentResponse.status} — check if this route exists!`);
+      // Content - fetch each content key individually
+      const [siteTitleResponse, heroTitleResponse, heroSubtitleResponse, contactPhoneResponse, contactEmailResponse] = await Promise.all([
+        fetch("/api/content/site_title"),
+        fetch("/api/content/hero_title"), 
+        fetch("/api/content/hero_subtitle"),
+        fetch("/api/content/contact_phone"),
+        fetch("/api/content/contact_email")
+      ]);
+
+      // Check if any content requests failed
+      const contentResponses = [siteTitleResponse, heroTitleResponse, heroSubtitleResponse, contactPhoneResponse, contactEmailResponse];
+      const contentKeys = ['site_title', 'hero_title', 'hero_subtitle', 'contact_phone', 'contact_email'];
+      
+      for (let i = 0; i < contentResponses.length; i++) {
+        if (!contentResponses[i].ok) {
+          throw new Error(`Content ${contentKeys[i]} failed: ${contentResponses[i].status}`);
+        }
       }
-      const contentData = await contentResponse.json() as { [key: string]: string };
+
+      const [siteTitleData, heroTitleData, heroSubtitleData, contactPhoneData, contactEmailData] = await Promise.all([
+        siteTitleResponse.json(),
+        heroTitleResponse.json(),
+        heroSubtitleResponse.json(),
+        contactPhoneResponse.json(),
+        contactEmailResponse.json()
+      ]);
 
       setData({
         content: {
-          siteTitle: contentData.site_title || "",
-          heroTitle: contentData.hero_title || "",
-          heroSubtitle: contentData.hero_subtitle || "",
-          contactPhone: contentData.contact_phone || "",
-          contactEmail: contentData.contact_email || "",
+          siteTitle: siteTitleData.value || "",
+          heroTitle: heroTitleData.value || "",
+          heroSubtitle: heroSubtitleData.value || "",
+          contactPhone: contactPhoneData.value || "",
+          contactEmail: contactEmailData.value || "",
         },
         studioServices: services.filter(s => s.category === "studio" && s.is_active),
         natureServices: services.filter(s => s.category === "nature" && s.is_active),
